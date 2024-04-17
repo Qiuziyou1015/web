@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <title>第四~六課</title>
+  <style>
+    html {
+      background-color: black;
+      color: white;
+    }
+
+    table {
+      width: 600px;
+      border: 1px solid white;
+    }
+
+    th,
+    tr,
+    td {
+      border: 1px solid #ffffff;
+      padding: 10px;
+    }
+
+    .tr1 {
+      width: 35%;
+    }
+
+    .tr2 {
+      width: 22%;
+    }
+
+    .tr3 {
+      width: 10%;
+    }
+
+
+    html {
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+    }
+
+    table {
+      width: 600px;
+
+      border: 1px solid white;
+    }
+
+    th,
+    tr,
+    td {
+      border: 1px solid #ffffff;
+      padding: 10px;
+    }
+
+    .tr1 {
+      width: 35%;
+    }
+
+    .tr2 {
+      width: 22%;
+    }
+
+    .tr3 {
+      width: 10%;
+    }
+
+    table {
+      background-color: #7a95e7;
+      width: 1000px;
+      color: #000000;
+      padding: 40px;
+      box-shadow: 10px 10px 25px #000000;
+      border-radius: 22px;
+      align-items: center;
+    }
+
+    button {
+      width: 150px;
+      border: 2px solid #78cc2e;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      background: none;
+      padding: 12px;
+      font-size: 15px;
+      border-radius: 22px;
+      outline: none;
+      color: #000000;
+    }
+
+    button:hover {
+      background-color: #78cc2e;
+      transition: 0.5s
+    }
+  </style>
+
+
+  <script>
+    function show(target, isShow) {
+      document.getElementById("hide" + target).style.display = isShow ? "" : "none";
+    }
+  </script>
+</head>
+
+<body>
+  <h1>L4~L6單字</h1>
+  <h2>A</h2>
+  <table>
+
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide1" style="display:'';">advantage</div>
+      </td>
+      <td>n.</td>
+      <td>a____________e</td>
+      <td>好處;優點</td>
+      <td>
+        <button id="show1" onclick="show(1,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(1,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide2" style="display:'';">advantage</div>
+      </td>
+      <td>n.</td>
+      <td>a____________e</td>
+      <td>優勢</td>
+      <td>
+        <button id="show1" onclick="show(2,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(2,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide3" style="display:'';">anxiety</div>
+      </td>
+      <td>n.</td>
+      <td>a________y</td>
+      <td>焦慮;不安</td>
+      <td>
+        <button id="show1" onclick="show(3,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(3,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide4" style="display:'';">anxious</div>
+      </td>
+      <td>adj.</td>
+      <td>a_______s</td>
+      <td>焦慮的;擔憂的</td>
+      <td>
+        <button id="show1" onclick="show(4,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(4,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide5" style="display:'';">apologize</div>
+      </td>
+      <td>v.</td>
+      <td>a_________e</td>
+      <td>道歉</td>
+      <td>
+        <button id="show1" onclick="show(5,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(5,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide6" style="display:'';">apology</div>
+      </td>
+      <td>n.</td>
+      <td>a______y</td>
+      <td>道歉</td>
+      <td>
+        <button id="show1" onclick="show(6,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(6,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide7" style="display:'';">application</div>
+      </td>
+      <td>n.</td>
+      <td>a___________n</td>
+      <td>申請</td>
+      <td>
+        <button id="show1" onclick="show(7,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(7,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide8" style="display:'';">apply</div>
+      </td>
+      <td>v.</td>
+      <td>a____y</td>
+      <td>申請</td>
+      <td>
+        <button id="show1" onclick="show(8,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(8,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide9" style="display:'';">approach</div>
+      </td>
+      <td>v.</td>
+      <td>a_______h</td>
+      <td>靠近;接近</td>
+      <td>
+        <button id="show1" onclick="show(9,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(9,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide10" style="display:'';">approach</div>
+      </td>
+      <td>n.</td>
+      <td>a_______h</td>
+      <td>方法;方式</td>
+      <td>
+        <button id="show1" onclick="show(10,true)" href="javascript:;">顯示英文</button>
+        <button id="show1" onclick="show(10,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>B</h2>
+  <table>
+    <tr>
+
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+
+    </tr>
+    <tr>
+      <td>
+        <div id="hide11" style="display:'';">battery</div>
+      </td>
+      <td>n.</td>
+      <td>b____y</td>
+      <td>電池</td>
+      <td>
+        <button id="show11" onclick="show(11,true)" href="javascript:;">顯示英文</button>
+        <button id="show11" onclick="show(11,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide12" style="display:'';">behave</div>
+      </td>
+      <td>v.</td>
+      <td>b____e</td>
+      <td>表現</td>
+      <td>
+        <button id="show12" onclick="show(12,true)" href="javascript:;">顯示英文</button>
+        <button id="show12" onclick="show(12,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide13" style="display:'';">behavior</div>
+      </td>
+      <td>n.</td>
+      <td>b____r</td>
+      <td>行為;舉止</td>
+      <td>
+        <button id="show13" onclick="show(13,true)" href="javascript:;">顯示英文</button>
+        <button id="show13" onclick="show(13,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide14" style="display:'';">benefit</div>
+      </td>
+      <td>n.</td>
+      <td>b____t</td>
+      <td>益處;優勢</td>
+      <td>
+        <button id="show14" onclick="show(14,true)" href="javascript:;">顯示英文</button>
+        <button id="show14" onclick="show(14,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide15" style="display:'';">benefit</div>
+      </td>
+      <td>v.</td>
+      <td>b____t</td>
+      <td>使受益</td>
+      <td>
+        <button id="show15" onclick="show(15,true)" href="javascript:;">顯示英文</button>
+        <button id="show15" onclick="show(15,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide16" style="display:'';">bill</div>
+      </td>
+      <td>n.</td>
+      <td>b____l</td>
+      <td>帳單</td>
+      <td>
+        <button id="show16" onclick="show(16,true)" href="javascript:;">顯示英文</button>
+        <button id="show16" onclick="show(16,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide17" style="display:'';">blame</div>
+      </td>
+      <td>v.</td>
+      <td>b____e</td>
+      <td>怪罪;責備</td>
+      <td>
+        <button id="show17" onclick="show(17,true)" href="javascript:;">顯示英文</button>
+        <button id="show17" onclick="show(17,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide18" style="display:'';">blame</div>
+      </td>
+      <td>n.</td>
+      <td>b____e</td>
+      <td>怪罪;責備</td>
+      <td>
+        <button id="show18" onclick="show(18,true)" href="javascript:;">顯示英文</button>
+        <button id="show18" onclick="show(18,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide19" style="display:'';">brand</div>
+      </td>
+      <td>n.</td>
+      <td>b____e</td>
+      <td>怪罪;責備</td>
+      <td>
+        <button id="show19" onclick="show(19,true)" href="javascript:;">顯示英文</button>
+        <button id="show19" onclick="show(19,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>C</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide20" style="display:'';">charge</div>
+      </td>
+      <td>v.</td>
+      <td>c____e</td>
+      <td>收費;要價</td>
+      <td>
+        <button id="show19" onclick="show(20,true)" href="javascript:;">顯示英文</button>
+        <button id="show19" onclick="show(20,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide21" style="display:'';">charged</div>
+      </td>
+      <td>adj.</td>
+      <td>c____d</td>
+      <td>氣氛緊張的</td>
+      <td>
+        <button id="show20" onclick="show(21,true)" href="javascript:;">顯示英文</button>
+        <button id="show20" onclick="show(21,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide22" style="display:'';">complex</div>
+      </td>
+      <td>n.</td>
+      <td>c____x</td>
+      <td>建築群</td>
+      <td>
+        <button id="show21" onclick="show(22,true)" href="javascript:;">顯示英文</button>
+        <button id="show21" onclick="show(22,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide23" style="display:'';">complex</div>
+      </td>
+      <td>adj.</td>
+      <td>c____x</td>
+      <td>複雜的;費解的</td>
+      <td>
+        <button id="show22" onclick="show(23,true)" href="javascript:;">顯示英文</button>
+        <button id="show22" onclick="show(23,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide24" style="display:'';">condition</div>
+      </td>
+      <td>n.</td>
+      <td>c____n</td>
+      <td>狀況;狀態</td>
+      <td>
+        <button id="show23" onclick="show(24,true)" href="javascript:;">顯示英文</button>
+        <button id="show23" onclick="show(24,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide25" style="display:'';">conditions</div>
+      </td>
+      <td>n.</td>
+      <td>c____s</td>
+      <td>情況;條件</td>
+      <td>
+        <button id="show24" onclick="show(25,true)" href="javascript:;">顯示英文</button>
+        <button id="show24" onclick="show(25,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide26" style="display:'';">consider</div>
+      </td>
+      <td>v.</td>
+      <td>c____r</td>
+      <td>考慮</td>
+      <td>
+        <button id="show25" onclick="show(26,true)" href="javascript:;">顯示英文</button>
+        <button id="show25" onclick="show(26,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide27" style="display:'';">consideration</div>
+      </td>
+      <td>n.</td>
+      <td>c____n</td>
+      <td>考慮</td>
+      <td>
+        <button id="show26" onclick="show(27,true)" href="javascript:;">顯示英文</button>
+        <button id="show26" onclick="show(27,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide28" style="display:'';">crop</div>
+      </td>
+      <td>n.</td>
+      <td>c____p</td>
+      <td>農作物</td>
+      <td>
+        <button id="show27" onclick="show(28,true)" href="javascript:;">顯示英文</button>
+        <button id="show27" onclick="show(28,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>D</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide29" style="display:'';">damage</div>
+      </td>
+      <td>n.</td>
+      <td>d____e</td>
+      <td>破壞;損壞</td>
+      <td>
+        <button id="show29" onclick="show(29,true)" href="javascript:;">顯示英文</button>
+        <button id="show29" onclick="show(29,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide30" style="display:'';">damage</div>
+      </td>
+      <td>v.</td>
+      <td>d____e</td>
+      <td>破壞;損壞</td>
+      <td>
+        <button id="show30" onclick="show(30,true)" href="javascript:;">顯示英文</button>
+        <button id="show30" onclick="show(30,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide31" style="display:'';">degree</div>
+      </td>
+      <td>n.</td>
+      <td>d____e</td>
+      <td>度數</td>
+      <td>
+        <button id="show31" onclick="show(31,true)" href="javascript:;">顯示英文</button>
+        <button id="show31" onclick="show(31,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide32" style="display:'';">degree</div>
+      </td>
+      <td>n.</td>
+      <td>d____e</td>
+      <td>程度</td>
+      <td>
+        <button id="show32" onclick="show(32,true)" href="javascript:;">顯示英文</button>
+        <button id="show32" onclick="show(32,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide33" style="display:'';">dust</div>
+      </td>
+      <td>n.</td>
+      <td>d____t</td>
+      <td>灰塵;塵土</td>
+      <td>
+        <button id="show33" onclick="show(33,true)" href="javascript:;">顯示英文</button>
+        <button id="show33" onclick="show(33,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+
+  <h2>E</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide34" style="display:'';">earn</div>
+      </td>
+      <td>v.</td>
+      <td>e____n</td>
+      <td>掙得;賺得</td>
+      <td>
+        <button id="show34" onclick="show(34,true)" href="javascript:;">顯示英文</button>
+        <button id="show34" onclick="show(34,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide35" style="display:'';">economic</div>
+      </td>
+      <td>adj.</td>
+      <td>e____c</td>
+      <td>經濟上的</td>
+      <td>
+        <button id="show35" onclick="show(35,true)" href="javascript:;">顯示英文</button>
+        <button id="show35" onclick="show(35,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide36" style="display:'';">economy</div>
+      </td>
+      <td>n.</td>
+      <td>e____y</td>
+      <td>經濟</td>
+      <td>
+        <button id="show36" onclick="show(36,true)" href="javascript:;">顯示英文</button>
+        <button id="show36" onclick="show(36,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide37" style="display:'';">electric</div>
+      </td>
+      <td>adj.</td>
+      <td>e____c</td>
+      <td>電的;用電的</td>
+      <td>
+        <button id="show37" onclick="show(37,true)" href="javascript:;">顯示英文</button>
+        <button id="show37" onclick="show(37,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide38" style="display:'';">electrical</div>
+      </td>
+      <td>adj.</td>
+      <td>e____l</td>
+      <td>與電有關的</td>
+      <td>
+        <button id="show38" onclick="show(38,true)" href="javascript:;">顯示英文</button>
+        <button id="show38" onclick="show(38,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide39" style="display:'';">electricity</div>
+      </td>
+      <td>n.</td>
+      <td>e____y</td>
+      <td>電;電力</td>
+      <td>
+        <button id="show39" onclick="show(39,true)" href="javascript:;">顯示英文</button>
+        <button id="show39" onclick="show(39,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide40" style="display:'';">emotion</div>
+      </td>
+      <td>n.</td>
+      <td>e____n</td>
+      <td>情緒;感情</td>
+      <td>
+        <button id="show40" onclick="show(40,true)" href="javascript:;">顯示英文</button>
+        <button id="show40" onclick="show(40,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide41" style="display:'';">emotional</div>
+      </td>
+      <td>adj.</td>
+      <td>e____l</td>
+      <td>情感上的</td>
+      <td>
+        <button id="show41" onclick="show(41,true)" href="javascript:;">顯示英文</button>
+        <button id="show41" onclick="show(41,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide42" style="display:'';">environment</div>
+      </td>
+      <td>n.</td>
+      <td>e____t</td>
+      <td>自然環境</td>
+      <td>
+        <button id="show42" onclick="show(42,true)" href="javascript:;">顯示英文</button>
+        <button id="show42" onclick="show(42,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide43" style="display:'';">environmental</div>
+      </td>
+      <td>adj.</td>
+      <td>e____l</td>
+      <td>環境的</td>
+      <td>
+        <button id="show43" onclick="show(43,true)" href="javascript:;">顯示英文</button>
+        <button id="show43" onclick="show(43,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide44" style="display:'';">essay</div>
+      </td>
+      <td>n.</td>
+      <td>e____y</td>
+      <td>短文</td>
+      <td>
+        <button id="show44" onclick="show(44,true)" href="javascript:;">顯示英文</button>
+        <button id="show44" onclick="show(44,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+
+  <h2>F</h2>
+  <table>
+
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide45" style="display:'';">function</div>
+      </td>
+      <td>n.</td>
+      <td>f____n</td>
+      <td>用途;功用</td>
+      <td>
+        <button id="show45" onclick="show(45,true)" href="javascript:;">顯示英文</button>
+        <button id="show45" onclick="show(45,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide46" style="display:'';">function</div>
+      </td>
+      <td>v.</td>
+      <td>f____n</td>
+      <td>運作;起作用</td>
+      <td>
+        <button id="show46" onclick="show(46,true)" href="javascript:;">顯示英文</button>
+        <button id="show46" onclick="show(46,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+
+  </table>
+  <H2>I</H2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide47" style="display:'';">impact</div>
+      </td>
+      <td>n.</td>
+      <td>i____t</td>
+      <td>影響</td>
+      <td>
+        <button id="show47" onclick="show(47,true)" href="javascript:;">顯示英文</button>
+        <button id="show47" onclick="show(47,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide48" style="display:'';">install</div>
+      </td>
+      <td>v.</td>
+      <td>i____l</td>
+      <td>安裝;設置</td>
+      <td>
+        <button id="show48" onclick="show(48,true)" href="javascript:;">顯示英文</button>
+        <button id="show48" onclick="show(48,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+
+  <h2>L</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide49" style="display:'';">lack</div>
+      </td>
+      <td>n.</td>
+      <td>l____k</td>
+      <td>欠缺;不足</td>
+      <td>
+        <button id="show49" onclick="show(49,true)" href="javascript:;">顯示英文</button>
+        <button id="show49" onclick="show(49,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide50" style="display:'';">lack</div>
+      </td>
+      <td>v.</td>
+      <td>l____k</td>
+      <td>缺少;缺乏</td>
+      <td>
+        <button id="show50" onclick="show(50,true)" href="javascript:;">顯示英文</button>
+        <button id="show50" onclick="show(50,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>M</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide51" style="display:'';">maniputlate</div>
+      </td>
+      <td>v.</td>
+      <td>m____e</td>
+      <td>操縱</td>
+      <td>
+        <button id="show51" onclick="show(51,true)" href="javascript:;">顯示英文</button>
+        <button id="show51" onclick="show(51,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide52" style="display:'';">monitor</div>
+      </td>
+      <td>v.</td>
+      <td>m____r</td>
+      <td>監控</td>
+      <td>
+        <button id="show52" onclick="show(52,true)" href="javascript:;">顯示英文</button>
+        <button id="show52" onclick="show(52,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide53" style="display:'';">monitor</div>
+      </td>
+      <td>n.</td>
+      <td>m____r</td>
+      <td>監視器</td>
+      <td>
+        <button id="show53" onclick="show(53,true)" href="javascript:;">顯示英文</button>
+        <button id="show53" onclick="show(53,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide54" style="display:'';">moreover</div>
+      </td>
+      <td>adv.</td>
+      <td>m____r</td>
+      <td>此外;而且</td>
+      <td>
+        <button id="show54" onclick="show(54,true)" href="javascript:;">顯示英文</button>
+        <button id="show54" onclick="show(54,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>O</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide55" style="display:'';">organic</div>
+      </td>
+      <td>adj.</td>
+      <td>o____c</td>
+      <td>有機的</td>
+      <td>
+        <button id="show55" onclick="show(55,true)" href="javascript:;">顯示英文</button>
+        <button id="show55" onclick="show(55,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide56" style="display:'';">owe</div>
+      </td>
+      <td>v.</td>
+      <td>o____e</td>
+      <td>虧欠</td>
+      <td>
+        <button id="show56" onclick="show(56,true)" href="javascript:;">顯示英文</button>
+        <button id="show56" onclick="show(56,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide57" style="display:'';">owe</div>
+      </td>
+      <td>v.</td>
+      <td>o____e</td>
+      <td>欠…</td>
+      <td>
+        <button id="show57" onclick="show(57,true)" href="javascript:;">顯示英文</button>
+        <button id="show57" onclick="show(57,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>P</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide58" style="display:'';">plenty</div>
+      </td>
+      <td>pron.</td>
+      <td>p____y</td>
+      <td>大量;許多</td>
+      <td>
+        <button id="show58" onclick="show(58,true)" href="javascript:;">顯示英文</button>
+        <button id="show58" onclick="show(58,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide59" style="display:'';">poverty</div>
+      </td>
+      <td>n.</td>
+      <td>p____y</td>
+      <td>貧窮;貧困</td>
+      <td>
+        <button id="show59" onclick="show(59,true)" href="javascript:;">顯示英文</button>
+        <button id="show59" onclick="show(59,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide60" style="display:'';">produce</div>
+      </td>
+      <td>v.</td>
+      <td>p____e</td>
+      <td>生產;製造</td>
+      <td>
+        <button id="show60" onclick="show(60,true)" href="javascript:;">顯示英文</button>
+        <button id="show60" onclick="show(60,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide61" style="display:'';">product</div>
+      </td>
+      <td>n.</td>
+      <td>p____t</td>
+      <td>產品</td>
+      <td>
+        <button id="show61" onclick="show(61,true)" href="javascript:;">顯示英文</button>
+        <button id="show61" onclick="show(61,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide62" style="display:'';">production</div>
+      </td>
+      <td>n.</td>
+      <td>p____n</td>
+      <td>生產;製造</td>
+      <td>
+        <button id="show62" onclick="show(62,true)" href="javascript:;">顯示英文</button>
+        <button id="show62" onclick="show(62,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide63" style="display:'';">profit</div>
+      </td>
+      <td>n.</td>
+      <td>p____t</td>
+      <td>利潤;收益</td>
+      <td>
+        <button id="show63" onclick="show(63,true)" href="javascript:;">顯示英文</button>
+        <button id="show63" onclick="show(63,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide64" style="display:'';">profit</div>
+      </td>
+      <td>v.</td>
+      <td>p____t</td>
+      <td>獲益;受惠</td>
+      <td>
+        <button id="show64" onclick="show(64,true)" href="javascript:;">顯示英文</button>
+        <button id="show64" onclick="show(64,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide65" style="display:'';">promise</div>
+      </td>
+      <td>n.</td>
+      <td>p____e</td>
+      <td>承諾;諾言</td>
+      <td>
+        <button id="show65" onclick="show(65,true)" href="javascript:;">顯示英文</button>
+        <button id="show65" onclick="show(65,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide66" style="display:'';">promise</div>
+      </td>
+      <td>v.</td>
+      <td>p____e</td>
+      <td>承諾</td>
+      <td>
+        <button id="show66" onclick="show(66,true)" href="javascript:;">顯示英文</button>
+        <button id="show66" onclick="show(66,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide67" style="display:'';">provide</div>
+      </td>
+      <td>v.</td>
+      <td>p____e</td>
+      <td>提供;給予</td>
+      <td>
+        <button id="show67" onclick="show(67,true)" href="javascript:;">顯示英文</button>
+        <button id="show67" onclick="show(67,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>Q</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide68" style="display:'';">quantity</div>
+      </td>
+      <td>v.</td>
+      <td>q____y</td>
+      <td>數量</td>
+      <td>
+        <button id="show68" onclick="show(68,true)" href="javascript:;">顯示英文</button>
+        <button id="show68" onclick="show(68,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>R</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide69" style="display:'';">realize</div>
+      </td>
+      <td>v.</td>
+      <td>r____e</td>
+      <td>了解;發覺</td>
+      <td>
+        <button id="show69" onclick="show(69,true)" href="javascript:;">顯示英文</button>
+        <button id="show69" onclick="show(69,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide70" style="display:'';">reasonable</div>
+      </td>
+      <td>adj.</td>
+      <td>r____e</td>
+      <td>合理的</td>
+      <td>
+        <button id="show70" onclick="show(70,true)" href="javascript:;">顯示英文</button>
+        <button id="show70" onclick="show(70,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide71" style="display:'';">refuse</div>
+      </td>
+      <td>v.</td>
+      <td>r____e</td>
+      <td>拒絕</td>
+      <td>
+        <button id="show71" onclick="show(71,true)" href="javascript:;">顯示英文</button>
+        <button id="show71" onclick="show(71,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide72" style="display:'';">regret</div>
+      </td>
+      <td>v.</td>
+      <td>r____t</td>
+      <td>為…感到遺憾、後悔</td>
+      <td>
+        <button id="show72" onclick="show(72,true)" href="javascript:;">顯示英文</button>
+        <button id="show72" onclick="show(72,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide73" style="display:'';">regret</div>
+      </td>
+      <td>n.</td>
+      <td>r____t</td>
+      <td>遺憾;後悔</td>
+      <td>
+        <button id="show73" onclick="show(73,true)" href="javascript:;">顯示英文</button>
+        <button id="show73" onclick="show(73,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide74" style="display:'';">request</div>
+      </td>
+      <td>n.</td>
+      <td>r____t</td>
+      <td>要求;請求</td>
+      <td>
+        <button id="show74" onclick="show(74,true)" href="javascript:;">顯示英文</button>
+        <button id="show74" onclick="show(74,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide75" style="display:'';">request</div>
+      </td>
+      <td>v.</td>
+      <td>r____t</td>
+      <td>要求;請求</td>
+      <td>
+        <button id="show75" onclick="show(75,true)" href="javascript:;">顯示英文</button>
+        <button id="show75" onclick="show(75,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide76" style="display:'';">responsibility</div>
+      </td>
+      <td>n.</td>
+      <td>r____y</td>
+      <td>負責</td>
+      <td>
+        <button id="show76" onclick="show(76,true)" href="javascript:;">顯示英文</button>
+        <button id="show76" onclick="show(76,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide77" style="display:'';">responsibility</div>
+      </td>
+      <td>n.</td>
+      <td>r____y</td>
+      <td>負責;責任</td>
+      <td>
+        <button id="show77" onclick="show(77,true)" href="javascript:;">顯示英文</button>
+        <button id="show77" onclick="show(77,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide78" style="display:'';">responsible</div>
+      </td>
+      <td>adj.</td>
+      <td>r____e</td>
+      <td>負責…的</td>
+      <td>
+        <button id="show78" onclick="show(78,true)" href="javascript:;">顯示英文</button>
+        <button id="show78" onclick="show(78,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide79" style="display:'';">return</div>
+      </td>
+      <td>n.</td>
+      <td>r____n</td>
+      <td>收益;收入</td>
+      <td>
+        <button id="show79" onclick="show(79,true)" href="javascript:;">顯示英文</button>
+        <button id="show79" onclick="show(79,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide80" style="display:'';">return</div>
+      </td>
+      <td>n.</td>
+      <td>r____n</td>
+      <td>返回;歸來</td>
+      <td>
+        <button id="show80" onclick="show(80,true)" href="javascript:;">顯示英文</button>
+        <button id="show80" onclick="show(80,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide81" style="display:'';">return</div>
+      </td>
+      <td>v.</td>
+      <td>r____n</td>
+      <td>返回;回去</td>
+      <td>
+        <button id="show81" onclick="show(81,true)" href="javascript:;">顯示英文</button>
+        <button id="show81" onclick="show(81,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>S</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide82" style="display:'';">saving</div>
+      </td>
+      <td>n.</td>
+      <td>s____g</td>
+      <td>積蓄;省下的錢</td>
+      <td>
+        <button id="show82" onclick="show(82,true)" href="javascript:;">顯示英文</button>
+        <button id="show82" onclick="show(82,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide83" style="display:'';">selfish</div>
+      </td>
+      <td>adj.</td>
+      <td>s____h</td>
+      <td>自私的</td>
+      <td>
+        <button id="show83" onclick="show(83,true)" href="javascript:;">顯示英文</button>
+        <button id="show83" onclick="show(83,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide84" style="display:'';">setail</div>
+      </td>
+      <td>n.</td>
+      <td>s____l</td>
+      <td>細節</td>
+      <td>
+        <button id="show84" onclick="show(84,true)" href="javascript:;">顯示英文</button>
+        <button id="show84" onclick="show(84,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide85" style="display:'';">singnificance</div>
+      </td>
+      <td>n.</td>
+      <td>s____e</td>
+      <td>重要性</td>
+      <td>
+        <button id="show85" onclick="show(85,true)" href="javascript:;">顯示英文</button>
+        <button id="show85" onclick="show(85,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide86" style="display:'';">singnificant</div>
+      </td>
+      <td>adj.</td>
+      <td>s____t</td>
+      <td>重大的</td>
+      <td>
+        <button id="show86" onclick="show(86,true)" href="javascript:;">顯示英文</button>
+        <button id="show86" onclick="show(86,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide87" style="display:'';">situation</div>
+      </td>
+      <td>n.</td>
+      <td>s____n</td>
+      <td>情形;狀況</td>
+      <td>
+        <button id="show87" onclick="show(87,true)" href="javascript:;">顯示英文</button>
+        <button id="show87" onclick="show(87,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide88" style="display:'';">specific</div>
+      </td>
+      <td>adj.</td>
+      <td>s____c</td>
+      <td>特定的</td>
+      <td>
+        <button id="show88" onclick="show(88,true)" href="javascript:;">顯示英文</button>
+        <button id="show88" onclick="show(88,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide89" style="display:'';">specifically</div>
+      </td>
+      <td>adv.</td>
+      <td>s____y</td>
+      <td>具體地;確切地</td>
+      <td>
+        <button id="show89" onclick="show(89,true)" href="javascript:;">顯示英文</button>
+        <button id="show89" onclick="show(89,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide90" style="display:'';">specifically</div>
+      </td>
+      <td>adv.</td>
+      <td>s____y</td>
+      <td>特意;專門地</td>
+      <td>
+        <button id="show90" onclick="show(90,true)" href="javascript:;">顯示英文</button>
+        <button id="show90" onclick="show(90,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide91" style="display:'';">struggle</div>
+      </td>
+      <td>v.</td>
+      <td>s____e</td>
+      <td>努力;奮鬥</td>
+      <td>
+        <button id="show91" onclick="show(91,true)" href="javascript:;">顯示英文</button>
+        <button id="show91" onclick="show(91,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide92" style="display:'';">struggle</div>
+      </td>
+      <td>n.</td>
+      <td>s____e</td>
+      <td>努力;奮鬥</td>
+      <td>
+        <button id="show92" onclick="show(92,true)" href="javascript:;">顯示英文</button>
+        <button id="show92" onclick="show(92,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide93" style="display:'';">suggest</div>
+      </td>
+      <td>v.</td>
+      <td>s____t</td>
+      <td>建議</td>
+      <td>
+        <button id="show93" onclick="show(93,true)" href="javascript:;">顯示英文</button>
+        <button id="show93" onclick="show(93,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide94" style="display:'';">suggestion</div>
+      </td>
+      <td>n.</td>
+      <td>s____n</td>
+      <td>建議</td>
+      <td>
+        <button id="show94" onclick="show(94,true)" href="javascript:;">顯示英文</button>
+        <button id="show94" onclick="show(94,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide95" style="display:'';">survival</div>
+      </td>
+      <td>n.</td>
+      <td>s____l</td>
+      <td>存活;倖存</td>
+      <td>
+        <button id="show95" onclick="show(95,true)" href="javascript:;">顯示英文</button>
+        <button id="show95" onclick="show(95,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide96" style="display:'';">survive</div>
+      </td>
+      <td>v.</td>
+      <td>s____e</td>
+      <td>生存;存活</td>
+      <td>
+        <button id="show96" onclick="show(96,true)" href="javascript:;">顯示英文</button>
+        <button id="show96" onclick="show(96,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide97" style="display:'';">survivor</div>
+      </td>
+      <td>n.</td>
+      <td>s____r</td>
+      <td>倖存者;生還者</td>
+      <td>
+        <button id="show97" onclick="show(97,true)" href="javascript:;">顯示英文</button>
+        <button id="show97" onclick="show(97,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide98" style="display:'';">sustainable</div>
+      </td>
+      <td>adj.</td>
+      <td>s____e</td>
+      <td>永續的</td>
+      <td>
+        <button id="show98" onclick="show(98,true)" href="javascript:;">顯示英文</button>
+        <button id="show98" onclick="show(98,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>T</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide99" style="display:'';">threat</div>
+      </td>
+      <td>n.</td>
+      <td>t____t</td>
+      <td>威脅</td>
+      <td>
+        <button id="show99" onclick="show(99,true)" href="javascript:;">顯示英文</button>
+        <button id="show99" onclick="show(99,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide100" style="display:'';">threaten</div>
+      </td>
+      <td>v.</td>
+      <td>t____n</td>
+      <td>威脅</td>
+      <td>
+        <button id="show100" onclick="show(100,true)" href="javascript:;">顯示英文</button>
+        <button id="show100" onclick="show(100,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <h2>U</h2>
+  <table>
+    <tr>
+      <th id="tr1">英文單詞</th>
+      <th id="tr2">詞性</th>
+      <th id="tr3">挖空</th>
+      <th id="tr4">中文解釋</th>
+      <th id="tr5"></th>
+    </tr>
+    <tr>
+      <td>
+        <div id="hide101" style="display:'';">urge</div>
+      </td>
+      <td>v.</td>
+      <td>u____e</td>
+      <td>力勸</td>
+      <td>
+        <button id="show101" onclick="show(101,true)" href="javascript:;">顯示英文</button>
+        <button id="show101" onclick="show(101,false)" href="javascript:;">隱藏英文</button>
+      </td>
+    </tr>
+  </table>
+  <button style="color: #ffffff;" href="index.html">返回</button>
+</body>
+
+
+</html>
