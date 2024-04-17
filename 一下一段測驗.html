@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隨機題目表單</title>
+    <style>
+        body {
+            background-color: #000000;
+            background-size: 100%;
+            font-family: Roboto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-repeat: no-repeat;
+            color: #f8f9fa;
+
+        }
+        .test{
+            font-size: large;
+        }
+
+        .p {
+            text-align: center;
+        }
+
+        .ch1 {
+            background-color: #7a95e7;
+            width: 450px;
+            color: #000000;
+            padding: 40px;
+            box-shadow: 10px 10px 25px #000000;
+            border-radius: 22px;
+            align-items: center;
+        }
+
+        .ch1 input {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            background: none;
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 22px;
+            outline: none;
+            color: #000000;
+        }
+        .ch1 button {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            background: none;
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 22px;
+            outline: none;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ch1" class="ch1">
+        <p id="test" class="test"></p>
+        <form id="randomQuestionForm">
+            <label for="randomQuestion">
+
+            </label>
+            
+            <input type="text" id="respond">
+            <button type="button" id="nextQuestionButton" onclick="generateRandomQuestion()"
+                style="display: none;">下一題</button>
+            <br>
+
+            <button type="submit" onclick="check()">提交</button>
+            <div id="none"></div>
+        </form>
+    </div>
+
+    <script>
+        var x, y, z, pp;
+        var questionsAsked = 0;
+        var askedQuestions = [];
+        var p = 0;
+        var t = 0;
+        x = ["accept", "acceptable", "argue", "argument", "artist", "artistic", "attempting", "attitude", "century", "colorful", "conflict", "connect", "connection", "construct", "construction", "convince", "couple", "cultural", "culture", "cycle", "debate", "decision", "defend", "delay", "describe", "description", "design", "disagree", "disagreement", "divide", "division", "drip", "escape", "exploration", "explore", "guide", "handle", "heal", "horn", "jam", "judge", "judgment", "mile", "peace", "peaceful", "perspective", "position", "project", "proposal", "propose", "recent", "recently", "reflect", "regular", "regularly", "relax", "remain", "sculpture", "similarity", "spin", "structure", "subway", "system", "trace", "track", "transport", "transportaion", "tunnel", "unique", "urban", "wonder", "worth", "worthy"];
+        function generateRandomQuestion() {
+            y = Math.floor(Math.random() * x.length);
+            z = x[y];
+            console.log(z);
+            // 清空輸入文字
+            document.getElementById("respond").value = "";
+            document.getElementById("none").innerHTML = "";
+            // 隨機
+            var questions = ["She a___t the job offer.",
+                "The proposal was a___e within our company.",
+                "They frequently a___e about political issues.",
+                "Our a___t lasted for several hours.",
+                "She is a talented a___t, specializing in oil painting.",
+                "The colors and composition of this painting are very a___c.",
+                "He is a___ting to learn a new language.",
+                "Her positive a___e makes a difference.",
+                "The 20th c___y witnessed significant technological advancements.",
+                "The festival was a c___l celebration of culture.",
+                "The c___t between the two nations escalated.",
+                "The bridge c___t the two sides of the city.",
+                "The c___n between art and emotion is fascinating.",
+                "They are planning to c___t a new building.",
+                "The c___n of the skyscraper is underway.",
+                "She managed to c___e them to change their minds.",
+                "The c___e enjoyed a romantic dinner by the beach.",
+                "The museum showcases various c___l artifacts.",
+                "Learning about different c___e broadens our perspective.",
+                "The water c___e is essential for maintaining life on Earth.",
+                "The candidates engaged in a lively d___e during the election.",
+                "Making a d___n requires careful consideration.",
+                "He will d___d his thesis in front of the committee.",
+                "The flight was d___y due to bad weather.",
+                "Can you d___e the scene in more detail ?",
+                "The d___n of the suspect matched the eyewitness account.",
+                "The architect created an innovative building d___n.",
+                "They d___e on the best approach to solving the problem.",
+                "The team had a heated d___t about the project.",
+                "The river d___e the city into two distinct neighborhoods.",
+                "The math problem involves long d___n.",
+                "The faucet has a slow d___p.",
+                "They managed to e___e from the burning building.",
+                "Space e___n has led to remarkable discoveries.",
+                "Let’s e___e the hidden trails in the forest.",
+                "The tour g___e explained the historical significance of the monument.",
+                "She knows how to h___e difficult situations.",
+                "Time can h___l emotional wounds.",
+                "The sound of the h___n alerted everyone.",
+                "The traffic j___m delayed our arrival.",
+                "The j___e carefully considered the evidence.",
+                "His j___t was clouded by personal bias.",
+                "We walked a m___e to reach the summit.",
+                "The treaty brought lasting p___e to the region.",
+                "The garden is a p___l retreat.",
+                "Different cultures offer unique p___e.",
+                "She holds a leadership p___n in the company.",
+                "The construction p___t will create jobs.",
+                "His marriage p___l was romantic and heartfelt.",
+                "He plans to p___e to his girlfriend next month.",
+                "In r___t years, technology has advanced rapidly.",
+                "I r___y visited a beautiful beach.",
+                "Take a moment to r___t on your achievements.",
+                "She has a r___r exercise routine.",
+                "He r___y attends yoga classes.",
+                "Let’s r___x and enjoy the sunset.",
+                "Only a few pieces r___n unsold.",
+                "The museum displays exquisite s___es.",
+                "There is a striking s___y between the two paintings.",
+                "The dancer performed an impressive pirouette s___n.",
+                "The ancient s___e has stood for centuries.",
+                "The s___y provides convenient transportation.",
+                "The solar s___m includes eight planets.",
+                "Can you t___e the origins of this tradition ?",
+                "The hikers followed a narrow t___k through the forest.",
+                "The cargo ship is used to t___t goods.",
+                "Public t___n is efficient in this city.",
+                "The train passed through a dark t___l. ",
+                "Each snowflake is u___e in its design.",
+                "The u___n landscape is constantly changing.",
+                "I w___r what lies beyond the horizon.",
+                "The local gallery is w___h a visit.",
+                "This w___y project has helped many people."
+            ];
+            var randomQuestion = questions[y];
+
+            // 顯示
+            document.getElementById("test").innerText = randomQuestion;
+            // 隱藏下一題按鈕
+            document.getElementById("nextQuestionButton").style.display = "none";
+            if (questionsAsked >= 25) {
+                pp = (p-25)*4;
+                alert("已完成25次問題。答對率" + pp + "%");
+                return;
+            }
+
+            z = x[y];
+
+            // 檢查是否問過這個問題
+            if (askedQuestions.includes(y)) {
+                generateRandomQuestion(); // 重新生成問題
+                return;
+            }
+
+            askedQuestions.push(y);
+            questionsAsked++;
+        }
+
+        document.getElementById("randomQuestionForm").addEventListener("submit", function (event) {
+            // 阻止刷新
+            event.preventDefault();
+            check();
+        });
+
+        function check() {
+            var input = document.getElementById("respond").value.trim();
+            if (input === z) {
+                if (t === 0) {
+                    p++;
+                    console.log(p)
+                }
+                document.getElementById("none").innerHTML = "正確";
+                // 顯示下一題按鈕
+                document.getElementById("nextQuestionButton").style.display = "inline-block";
+                t = 0;
+
+            } else {
+                document.getElementById("none").innerHTML = "錯誤 正確答案；"+ z;
+                t++;
+                document.getElementById("respond").value = "";
+                console.log(t);
+            }
+        }
+
+        generateRandomQuestion();
+
+    </script>
+
+</body>
+
+</html>
