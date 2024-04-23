@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隨機題目表單</title>
+    <style>
+        body {
+            background-color: #000000;
+            background-size: 100%;
+            font-family: Roboto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-repeat: no-repeat;
+            color: #f8f9fa;
+
+        }
+
+        .test {
+            font-size: large;
+        }
+
+        .p {
+            text-align: center;
+        }
+
+        .ch1 {
+            background-color: #7a95e7;
+            width: 450px;
+            color: #000000;
+            padding: 40px;
+            box-shadow: 10px 10px 25px #000000;
+            border-radius: 22px;
+            align-items: center;
+        }
+
+        .ch1 input {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            background: none;
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 22px;
+            outline: none;
+            color: #000000;
+        }
+
+        .ch1 button {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            background: none;
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 22px;
+            outline: none;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ch1" class="ch1">
+        <p id="test" class="test"></p>
+        <form id="randomQuestionForm">
+            <label for="randomQuestion">
+
+            </label>
+
+            <input type="text" id="respond">
+            <button type="button" id="nextQuestionButton" onclick="generateRandomQuestion()"
+                style="display: none;">下一題</button>
+            <br>
+
+            <button type="submit" onclick="check()">提交</button>
+            <div id="none"></div>
+        </form>
+    </div>
+
+    <script>
+        var x, y, z, pp;
+        var questionsAsked = 0;
+        var askedQuestions = [];
+        var p = 0;
+        var t = 0;
+        x = ["accident", "account", "accuracy", "accurate", "actual", "Actually", "additional", "additionally", "admit", "alive", "appeal", "authority", "bathe", "bone", "burden", "commit", "conclude", "conclusion", "conduct", "confess", "continue", "cope", "daily", "disease", "donate", "donation", "donor", "enable", "expand", "expert", "factor", "follower", "following", "guarantee", "guilt", "guilty", "illustrate", "illustration", "inner", "kidney", "maintain", "major", "majority", "master", "moral", "morals", "native", "northern", "obligation", "occur", "opponent", "organ", "process", "proof", "prove", "psychological", "refer", "reference", "relevant", "schedule", "seek", "shift", "ski", "spot", "state", "statement", "stress", "stressful", "stuck", "suffer", "surgery", "technological", "technology", "therefore", "truth", "truthful", "version"
+        ];
+        function generateRandomQuestion() {
+            y = Math.floor(Math.random() * x.length);
+            z = x[y];
+            console.log(z);
+            // 清空輸入文字
+            document.getElementById("respond").value = "";
+            document.getElementById("none").innerHTML = "";
+            // 隨機
+            var questions = ["The a_______t on the highway caused a massive traffic jam.",
+                "I need to update the password for my online a_______t.",
+                "The a_______y of the data is critical for the research findings.",
+                "The witness gave an a_______e description of the event.",
+                "The movie was based on a_______l events.",
+                "I a_______y prefer tea over coffee in the mornings.",
+                "We will require a_______l resources to complete the project.",
+                "A_______y, the report includes suggestions for future studies.",
+                "The student was a_______d to several top universities.",
+                "The rescue team was relieved to find the hikers a_______e.",
+                "The lawyer filed an a_______l after the verdict.",
+                "The local a_______y has issued a new parking regulation.",
+                "I love to b____e in the warm sunlight during spring.",
+                "The X - ray showed a fracture in the b____e.",
+                "The debt became a heavy b____n for the family.",
+                "The company is c____d to sustainable practices.",
+                "The meeting was c____d with a round of applause.",
+                "The c____n of the study was unexpected.",
+                "The scientist will c____t an experiment tomorrow.",
+                "The suspect c____d to the crime during the interrogation.",
+                "The show will c____e after a short break.",
+                "It’s important to learn how to c__e with stress.",
+                "Reading is part of my d____y routine.",
+                "Research is ongoing to find a cure for the d____e.",
+                "Many people d____d to the charity event.",
+                "The museum was built with the help of a large d____n.",
+                "The organ d____r saved several lives.",
+                "This feature will e____e users to access their files offline.",
+                "The company plans to e____d its operations overseas.",
+                "She is an e____t in environmental law.",
+                "Weather is a significant f____r in agricultural production.",
+                "The influencer has a million f____rs on social media.",
+                "The f____g chapter discusses the implications of the study.",
+                "The product comes with a two - year g____e.",
+                "The jury found the defendant not guilty, clearing him of any g____t.",
+                "She felt g____y for arriving late to the meeting.",
+                "The diagram i____s how the machine works.",
+                "The book contains beautiful i____s of wildlife.",
+                "Meditation can help you connect with your i____r self.",
+                "The patient is waiting for a k____y transplant.",
+                "It’s important to m____n a balanced diet.",
+                "The company announced a m____r breakthrough in technology.",
+                "The m____y of the class voted for the trip to the museum.",
+                "It takes years to m____r a musical instrument.",
+                "The story teaches a m____l lesson about honesty.",
+                "Good m____s are essential for a harmonious society.",
+                "She speaks two n____e languages fluently.",
+                "The n____n lights are a spectacular natural phenomenon.",
+                "You have an o____n to report any safety hazards.",
+                "The accident o____d at the intersection.",
+                "The team’s o____t in the final is very strong.",
+                "The heart is a vital o____n in the human body.",
+                "The p____s of making cheese is quite complex.",
+                "The scientist provided p____f of the new theory.",
+                "The experiment aims to p____e the hypothesis.",
+                "The event had a p____l impact on the participants.",
+                "Please r____r to the manual for troubleshooting.",
+                "The author included many r____s to historical events.",
+                "Only include r____t information in your report.",
+                "The conference s____e has been updated.",
+                "Many people s____k happiness in material possessions.",
+                "The workers are on the night s____t this week.",
+                "I learned to s__ when I was five years old.",
+                "I found a quiet s____t in the park to read.",
+                "The governor will s____e the new policy tomorrow.",
+                "The witness gave a s____t to the police.",
+                "Exercise can help reduce s____s.",
+                "Moving to a new city can be s____l.",
+                "The car got s____k in the mud.",
+                "Many people s____r from allergies in the spring.",
+                "The patient underwent s____y to remove the tumor.",
+                "We live in an era of rapid t____l advancement.",
+                "The new t____y has revolutionized communication.",
+                "He was the fastest runner; t____e, he won the race.",
+                "The detective searched for the t____h behind the mystery.",
+                "It’s important to be t____l in your statements.",
+                "The director released a new v____n of the film."
+            ];
+            var randomQuestion = questions[y];
+
+            // 顯示
+            document.getElementById("test").innerText = randomQuestion;
+            // 隱藏下一題按鈕
+            document.getElementById("nextQuestionButton").style.display = "none";
+            if (questionsAsked >= 25) {
+                pp = (p - 25) * 4;
+                alert("已完成25次問題。答對率" + pp + "%");
+                return;
+            }
+
+            z = x[y];
+
+            // 檢查是否問過這個問題
+            if (askedQuestions.includes(y)) {
+                generateRandomQuestion(); // 重新生成問題
+                return;
+            }
+
+            askedQuestions.push(y);
+            questionsAsked++;
+        }
+
+        document.getElementById("randomQuestionForm").addEventListener("submit", function (event) {
+            // 阻止刷新
+            event.preventDefault();
+            check();
+        });
+
+        function check() {
+            var input = document.getElementById("respond").value.trim();
+            if (input === z) {
+                if (t === 0) {
+                    p++;
+                    console.log(p)
+                }
+                document.getElementById("none").innerHTML = "正確";
+                // 顯示下一題按鈕
+                document.getElementById("nextQuestionButton").style.display = "inline-block";
+                t = 0;
+
+            } else {
+                document.getElementById("none").innerHTML = "錯誤 正確答案；" + z;
+                t++;
+                document.getElementById("respond").value = "";
+                console.log(t);
+            }
+        }
+
+        generateRandomQuestion();
+
+    </script>
+
+</body>
+
+</html>
