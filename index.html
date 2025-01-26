@@ -1,95 +1,163 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8472579951155909"
-     crossorigin="anonymous"></script>
-    <title></title>
+        crossorigin="anonymous"></script>
+    <title>英文單字學習</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <title></title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #4a4e69;
+            --secondary-color: #9a8c98;
+            --accent-color: #c9ada7;
+            --background-color: #22223b;
+            --text-color: #f2e9e4;
+        }
+
         body {
-            background-color: #000000;
-            
-            font-family: Roboto;
+            background-color: var(--background-color);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+        }
+
+        .content {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-repeat: no-repeat;
-            color: #f8f9fa;
+            padding: 20px;
+        }
 
+        .ch1 {
+            background-color: var(--primary-color);
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ch1:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         .h1 {
             text-align: center;
+            margin-bottom: 30px;
         }
 
-        .ch1 {
-            background-color: #7a95e7;
-            width: 450px;
-            color: #000000;
-            padding: 40px;
-            box-shadow: 10px 10px 25px #000000;
-            border-radius: 22px;
-            align-items: center;
-        }
-
-        .ch1 input {
-            display: block;
-            margin: 20px auto;
-            text-align: center;
-            background: none;
-            padding: 12px;
-            font-size: 15px;
-            border-radius: 22px;
-            outline: none;
-            color: #000000;
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .ch1 input[type="submit"] {
-            width: 250px;
-            border: 2px solid #78cc2e;
+            display: block;
+            width: 100%;
+            margin: 15px 0;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 30px;
+            border: none;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
             cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .ch1 input[type="submit"]:hover {
-            background-color: #78cc2e;
-            transition: 0.5s;
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        p {
-            text-align :center;
-            align-items: center;
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 500px) {
+            .ch1 {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .ch1 input[type="submit"] {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="ch1">
-        <form action="ch1.html">
+    <div class="content">
+        <div class="ch1">
             <div class="h1">
                 <h1>英文單字</h1>
             </div>
-            <input type="submit" value="一上 四~六課">
-
-        </form>
-        <form action="ch2.html">
-            <input type="submit" value="一上 七~九課">
-        </form>
-        <form action="ch1-2.html">
-            <input type="submit" value="一下 一~三課">
-        </form>
-        <form action="ch4-6.html">
-            <input type="submit" value="一下 四~六課">
-        </form>
-        <form action = "https://voccard.liveabc.com/live/2024/4/">
-            <input type="submit" value="一下 二段英雜單字(英雜官方網站)">
-        </form>
-        <form action = "一下三段.html">
-            <input type="submit" value="一下 七~九課">
-        </form>
-        <p>因為網站單字為全手打，可能會有錯誤<br>如若發現錯誤請email給 s210113@email.nlhs.tyc.edu.tw</p>
+            <form action="二上二段.html">
+                <input type="submit" value="二上 四~六課">
+            </form>
+            <form action="try.html">
+                <input type="submit" value="二上 一~三課">
+            </form>
+            <form action="一下三段.html">
+                <input type="submit" value="一下 七~九課">
+            </form>
+            <form action="https://voccard.liveabc.com/live/2024/4/">
+                <input type="submit" value="一下 二段英雜單字(英雜官方網站)">
+            </form>
+            <form action="一下二段.html">
+                <input type="submit" value="一下 四~六課">
+            </form>
+            <form action="一下一段.html">
+                <input type="submit" value="一下 一~三課">
+            </form>
+            <form action="一上三段.html">
+                <input type="submit" value="一上 七~九課">
+            </form>
+            <form action="一上二段.html">
+                <input type="submit" value="一上 四~六課">
+            </form>
+        </div>
     </div>
+    <footer>
+        <p>因為網站單字為全手打，可能會有錯誤<br>如若發現錯誤請email給 <a
+                href="mailto:s210113@email.nlhs.tyc.edu.tw">s210113@email.nlhs.tyc.edu.tw</a></p>
+    </footer>
 </body>
 
 </html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單字學習網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .letter-section {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 800px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        
+
+        .fill-in-blank {
+            font-family: monospace;
+            font-size: 1.2em;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>U1~U3單字</h1>
+    </header>
+
+    <main>
+        <select id="unitSelector">
+            <option value="">請選擇單元</option>
+            <option value="U1">U1</option>
+            <option value="U2">U2</option>
+            <option value="U3">U3</option>
+            <option value="U1~U3">U1~U3</option>
+        </select>
+        <div id="vocabularyTable"></div>
+    </main>
+
+    <footer>
+        &copy; 2024 單字學習網站
+    </footer>
+
+    <script>
+        const unitSelector = document.getElementById('unitSelector');
+        const vocabularyTable = document.getElementById('vocabularyTable');
+
+        const vocabularyData = {
+            'U1': [
+                { word: 'resident', partOfSpeech: 'n.', chinese: '居民' },
+                { word: 'facility', partOfSpeech: 'n.', chinese: '設施' },
+                { word: 'facility', partOfSpeech: 'n.', chinese: '場地，機構' },
+                { word: 'evolve', partOfSpeech: 'v.', chinese: '使逐步形成，發展' },
+                { word: 'evolution', partOfSpeech: 'n.', chinese: '發展，進化' },
+                { word: 'vision', partOfSpeech: 'n.', chinese: '願景' },
+                { word: 'vision', partOfSpeech: 'n.', chinese: '視力' },
+                { word: 'concept', partOfSpeech: 'n.', chinese: '概念，觀念' },
+                { word: 'access', partOfSpeech: 'n.', chinese: '途徑' },
+                { word: 'access', partOfSpeech: 'v.', chinese: '取得，使用' },
+                { word: 'accrss', partOfSpeech: 'v.', chinese: '存取，讀取' },
+                { word: 'education', partOfSpeech: 'n.', chinese: '教育' },
+                { word: 'educational', partOfSpeech: 'adj.', chinese: '教育的' },
+                { word: 'educate', partOfSpeech: 'v.', chinese: '教育' },
+                { word: 'equal', partOfSpeech: 'adj.', chinese: '平等的' },
+                { word: 'equal', partOfSpeech: 'adj.', chinese: '同樣的，相等的' },
+                { word: 'equal', partOfSpeech: 'v.', chinese: '等於，與…相等' },
+                { word: 'equality', partOfSpeech: 'n.', chinese: '平等，均等' },
+                { word: 'admission', partOfSpeech: 'n.', chinese: '准許進入' },
+                { word: 'consult', partOfSpeech: 'v.', chinese: '查閱' },
+                { word: 'consult', partOfSpeech: 'v.', chinese: '諮詢' },
+                { word: 'consultant', partOfSpeech: 'n.', chinese: '顧問' },
+                { word: 'insight', partOfSpeech: 'n.', chinese: '了解，洞悉' },
+                { word: 'insight', partOfSpeech: 'n.', chinese: '洞察力' },
+                { word: 'accommodate', partOfSpeech: 'v.', chinese: '容納' },
+                { word: 'accommodate', partOfSpeech: 'v.', chinese: '提供膳宿' },
+                { word: 'accommodations', partOfSpeech: 'n.', chinese: '住處' },
+                { word: 'distribute', partOfSpeech: 'v.', chinese: '分配，散布' },
+                { word: 'distribution', partOfSpeech: 'n.', chinese: '分配，配給' },
+                { word: 'emergency', partOfSpeech: 'n.', chinese: '緊急狀況' },
+                { word: 'integrate', partOfSpeech: 'v.', chinese: '使融合，使成為一體' },
+                { word: 'integration', partOfSpeech: 'n.', chinese: '融合' },
+                { word: 'remotely', partOfSpeech: 'adv.', chinese: '從遠處地，遠端點' },
+                { word: 'remote', partOfSpeech: 'adj.', chinese: '遙遠的，偏僻的' },
+                { word: 'route', partOfSpeech: 'n.', chinese: '路線' },
+                { word: 'warn', partOfSpeech: 'v.', chinese: '警告，告誡' },
+                { word: 'adjust', partOfSpeech: 'v.', chinese: '調整' },
+                { word: 'adjustment', partOfSpeech: 'n.', chinese: '提高，增強' },
+                { word: 'enhance', partOfSpeech: 'v.', chinese: '建立，創辦' },
+                { word: 'establish', partOfSpeech: 'v.', chinese: '建立，創辦' },
+                { word: 'establishment', partOfSpeech: 'n.', chinese: '機構' },
+                { word: 'summary', partOfSpeech: 'n.', chinese: '概要' },
+                { word: 'summarize', partOfSpeech: 'v.', chinese: '總結' },
+                { word: 'crucial', partOfSpeech: 'adj.', chinese: '關鍵的' },
+                { word: 'vital', partOfSpeech: 'adj.', chinese: '極重要的，不缺少的' },
+                { word: 'vital', partOfSpeech: 'adj.', chinese: '生命的，維持生命必須的' },
+                { word: 'aid', partOfSpeech: 'n.', chinese: '援助，援助' },
+                { word: 'aid', partOfSpeech: 'v.', chinese: '幫助，支援' },
+                { word: 'overestimate', partOfSpeech: 'v.', chinese: '高估' },
+                { word: 'estimate', partOfSpeech: 'v.', chinese: '估算，估計' },
+                { word: 'estimate', partOfSpeech: 'n.', chinese: '估算，估計' }
+            ],
+            'U2': [
+                // U2 單字
+            ],
+            'U3': [
+                // U3 單字
+            ]
+        };
+
+        unitSelector.addEventListener('change', function () {
+            const selectedUnit = this.value;
+            let words = [];
+
+            if (selectedUnit === 'U1~U3') {
+                words = Object.values(vocabularyData).flat();
+            } else if (vocabularyData[selectedUnit]) {
+                words = vocabularyData[selectedUnit];
+            }
+
+            displayVocabularyTable(words);
+        });
+
+        function displayVocabularyTable(words) {
+            if (words.length > 0) {
+                const groupedWords = groupWordsByFirstLetter(words);
+                const sortedLetters = Object.keys(groupedWords).sort();
+
+                let tableHTML = '';
+                sortedLetters.forEach(letter => {
+                    tableHTML += `
+                        <div class="letter-section">
+                            <h2>${letter}</h2>
+                            <table>
+                                <tr>
+                                    <th>單字</th>
+                                    <th>詞性</th>
+                                    <th>中文</th>
+                                    <th>填空</th>
+                                </tr>
+                    `;
+                    groupedWords[letter].forEach(word => {
+                        const blankWord = createBlankWord(word.word);
+                        tableHTML += `
+                            <tr>
+                                <td>${word.word}</td>
+                                <td>${word.partOfSpeech}</td>
+                                <td>${word.chinese}</td>
+                                <td><span class="fill-in-blank">${blankWord}</span></td>
+                            </tr>
+                        `;
+                    });
+                    tableHTML += '</table></div>';
+                });
+
+                vocabularyTable.innerHTML = tableHTML;
+            } else {
+                vocabularyTable.innerHTML = '<p>請選擇一個單元來顯示單字</p>';
+            }
+        }
+
+        function groupWordsByFirstLetter(words) {
+            const grouped = {};
+            words.forEach(word => {
+                const firstLetter = word.word[0].toUpperCase();
+                if (!grouped[firstLetter]) {
+                    grouped[firstLetter] = [];
+                }
+                grouped[firstLetter].push(word);
+            });
+            return grouped;
+        }
+
+        function createBlankWord(word) {
+            const firstLetter = word[0];
+            const lastLetter = word[word.length - 1];
+            const middlePart = '_'.repeat(word.length - 2);
+            return firstLetter + middlePart + lastLetter;
+        }
+    </script>
+
+</body>
+
+</html>

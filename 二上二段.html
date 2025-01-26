@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單字學習網站</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    header {
+        background-color: #f4f4f4;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    main {
+        flex-grow: 1;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    select {
+        padding: 0.5rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .first-letter-section {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        width: 100%;
+        max-width: 900px; 
+        border-collapse: collapse;
+        table-layout: auto;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        white-space: normal; 
+        overflow: visible;   
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+        width: 30%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+        width: 10%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+        width: 50%;
+    }
+
+    th:nth-child(4),
+    td:nth-child(4) {
+        width: 30%;
+    }
+
+    .fill-in-blank {
+        font-family: monospace;
+        font-size: 1.2em;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+    }
+
+    .fill-in-blank:hover {
+        background-color: #f0f0f0;
+    }
+
+    @media screen and (max-width: 900px) {
+        th, td {
+            padding: 6px;
+            font-size: 0.9em;
+        }
+
+        .fill-in-blank {
+            font-size: 1em;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+    <header>
+        <h1>U4~U6單字</h1>
+    </header>
+
+    <main>
+        <select id="unitSelector">
+            <option value="">請選擇單元</option>
+            <option value="U4">U4</option>
+            <option value="U5">U5</option>
+            <option value="U6">U6</option>
+            <option value="U4~U6">U4~U6</option>
+        </select>
+        <div id="vocabularyTable"><p>請選擇一個單元來顯示單字</p></div>
+    </main>
+
+    <footer>
+        <p>因為網站單字為全手打，可能會有錯誤<br>如若發現錯誤請email給 <a
+                href="mailto:s210113@email.nlhs.tyc.edu.tw">s210113@email.nlhs.tyc.edu.tw</a></p>
+    </footer>
+
+    <script>
+        const unitSelector = document.getElementById('unitSelector');
+        const vocabularyTable = document.getElementById('vocabularyTable');
+
+        const vocabularyData = {
+            'U4': [
+                { "word": "guidance", "partOfSpeech": "n.", "chinese": "引導，指引" },
+    { "word": "publish", "partOfSpeech": "v.", "chinese": "出版" },
+    { "word": "publisher", "partOfSpeech": "n.", "chinese": "出版商" },
+    { "word": "forgiveness", "partOfSpeech": "n.", "chinese": "寬恕，原諒" },
+    { "word": "forgive", "partOfSpeech": "v.", "chinese": "寬恕，原諒" },
+    { "word": "theme", "partOfSpeech": "n.", "chinese": "主題，中心思想" },
+    { "word": "character", "partOfSpeech": "n.", "chinese": "人物" },
+    { "word": "character", "partOfSpeech": "n.", "chinese": "性格，特性" },
+    { "word": "characteristic", "partOfSpeech": "adj.", "chinese": "特有的，典型的" },
+    { "word": "characteristic", "partOfSpeech": "n.", "chinese": "特色，特徵" },
+    { "word": "crime", "partOfSpeech": "n.", "chinese": "罪行" },
+    { "word": "crime", "partOfSpeech": "n.", "chinese": "犯罪，違法活動" },
+    { "word": "criminal", "partOfSpeech": "adj.", "chinese": "犯罪的" },
+    { "word": "criminal", "partOfSpeech": "n.", "chinese": "罪犯" },
+    { "word": "regain", "partOfSpeech": "v.", "chinese": "重新獲得" },
+    { "word": "gain", "partOfSpeech": "v.", "chinese": "獲得，取得" },
+    { "word": "gain", "partOfSpeech": "n.", "chinese": "獲得，增加" },
+    { "word": "steal", "partOfSpeech": "v.", "chinese": "偷取，盜竊" },
+    { "word": "adopt", "partOfSpeech": "v.", "chinese": "選用" },
+    { "word": "adopt", "partOfSpeech": "v.", "chinese": "領養，收養" },
+    { "word": "identity", "partOfSpeech": "n.", "chinese": "身分" },
+    { "word": "mercy", "partOfSpeech": "n.", "chinese": "仁慈，寬容" },
+    { "word": "individual", "partOfSpeech": "n.", "chinese": "個體，個人" },
+    { "word": "individual", "partOfSpeech": "adj.", "chinese": "個別的，單獨的" },
+    { "word": "scar", "partOfSpeech": "n.", "chinese": "傷疤" },
+    { "word": "scar", "partOfSpeech": "v.", "chinese": "結疤，留下傷疤" },
+    { "word": "bruise", "partOfSpeech": "n.", "chinese": "瘀青，擦傷" },
+    { "word": "bruise", "partOfSpeech": "v.", "chinese": "使受擦傷" },
+    { "word": "disturb", "partOfSpeech": "v.", "chinese": "使煩惱，使覺得困擾" },
+    { "word": "disturb", "partOfSpeech": "v.", "chinese": "打擾，干擾" },
+    { "word": "intense", "partOfSpeech": "adj.", "chinese": "激烈的，劇烈的" },
+    { "word": "intensity", "partOfSpeech": "n.", "chinese": "強烈，強度" },
+    { "word": "intensive", "partOfSpeech": "adj.", "chinese": "密集的" },
+    { "word": "justice", "partOfSpeech": "n.", "chinese": "正義，公正" },
+    { "word": "reward", "partOfSpeech": "v.", "chinese": "獎賞，酬謝" },
+    { "word": "reward", "partOfSpeech": "n.", "chinese": "報酬，回報" },
+    { "word": "legal", "partOfSpeech": "adj.", "chinese": "法律的" },
+    { "word": "confront", "partOfSpeech": "v.", "chinese": "處理，解決" },
+    { "word": "confront", "partOfSpeech": "v.", "chinese": "使面對" },
+    { "word": "confrontation", "partOfSpeech": "n.", "chinese": "衝突，對峙" },
+    { "word": "recommend", "partOfSpeech": "v.", "chinese": "推薦，介紹" },
+    { "word": "recommendation", "partOfSpeech": "n.", "chinese": "建議" },
+    { "word": "weep", "partOfSpeech": "v.", "chinese": "哭泣" },
+    { "word": "obstacle", "partOfSpeech": "n.", "chinese": "障礙，阻礙" }
+            ],
+            'U5': [
+                { "word": "fundamental", "partOfSpeech": "adj.", "chinese": "基本的，根本上的" },
+    { "word": "emphasize", "partOfSpeech": "v.", "chinese": "強調" },
+    { "word": "noble", "partOfSpeech": "adj.", "chinese": "崇高的" },
+    { "word": "principle", "partOfSpeech": "n.", "chinese": "原則，原理" },
+    { "word": "principle", "partOfSpeech": "n.", "chinese": "準則" },
+    { "word": "engineering", "partOfSpeech": "n.", "chinese": "工程學，工程" },
+    { "word": "disadvantaged", "partOfSpeech": "adj.", "chinese": "弱勢的，社會下層的" },
+    { "word": "disadvantage", "partOfSpeech": "n.", "chinese": "不利條件，劣勢" },
+    { "word": "encounter", "partOfSpeech": "v.", "chinese": "遇到，遭遇" },
+    { "word": "encounter", "partOfSpeech": "n.", "chinese": "相遇" },
+    { "word": "indeed", "partOfSpeech": "adv.", "chinese": "的確" },
+    { "word": "compare", "partOfSpeech": "v.", "chinese": "比較" },
+    { "word": "comparison", "partOfSpeech": "n.", "chinese": "比較" },
+    { "word": "indicate", "partOfSpeech": "v.", "chinese": "指出，顯示" },
+    { "word": "indication", "partOfSpeech": "n.", "chinese": "象徵，表示" },
+    { "word": "racial", "partOfSpeech": "adj.", "chinese": "種族的" },
+    { "word": "exist", "partOfSpeech": "v.", "chinese": "存在" },
+    { "word": "existence", "partOfSpeech": "n.", "chinese": "存在" },
+    { "word": "acceptance", "partOfSpeech": "n.", "chinese": "接受，接納" },
+    { "word": "highlight", "partOfSpeech": "v.", "chinese": "使突出，強調" },
+    { "word": "highlight", "partOfSpeech": "n.", "chinese": "最精彩的部分" },
+    { "word": "imbalance", "partOfSpeech": "n.", "chinese": "不平等" },
+    { "word": "balance", "partOfSpeech": "n.", "chinese": "平衡，均衡" },
+    { "word": "balance", "partOfSpeech": "v.", "chinese": "權衡，對稱" },
+    { "word": "bias", "partOfSpeech": "n.", "chinese": "偏見，偏袒" },
+    { "word": "bias", "partOfSpeech": "v.", "chinese": "使…懷有偏見" },
+    { "word": "prejudice", "partOfSpeech": "n.", "chinese": "偏見" },
+    { "word": "tackle", "partOfSpeech": "v.", "chinese": "處理，對付" },
+    { "word": "curriculum", "partOfSpeech": "n.", "chinese": "學校的全套課程" },
+    { "word": "material", "partOfSpeech": "n.", "chinese": "教學或活動所需的材料，原料" },
+    { "word": "material", "partOfSpeech": "n.", "chinese": "材料，原料" },
+    { "word": "expose", "partOfSpeech": "v.", "chinese": "使接觸到" },
+    { "word": "expose", "partOfSpeech": "v.", "chinese": "露出" },
+    { "word": "exposure", "partOfSpeech": "n.", "chinese": "接觸" },
+    { "word": "viewpoint", "partOfSpeech": "n.", "chinese": "觀點" },
+    { "word": "stereotype", "partOfSpeech": "n.", "chinese": "刻板印象，成見" },
+    { "word": "measure", "partOfSpeech": "v.", "chinese": "措施，方法" },
+    { "word": "measure", "partOfSpeech": "v.", "chinese": "測量" },
+    { "word": "widen", "partOfSpeech": "v.", "chinese": "加深，擴大" },
+    { "word": "widen", "partOfSpeech": "v.", "chinese": "拓寬，使變寬" }
+            ],
+            'U6': [
+           
+    { "word": "volunteer", "partOfSpeech": "n.", "chinese": "志願者，志工" },
+    { "word": "volunteer", "partOfSpeech": "v.", "chinese": "自願做，做志工" },
+    { "word": "occupy", "partOfSpeech": "v.", "chinese": "占用，佔有" },
+    { "word": "occupy", "partOfSpeech": "v.", "chinese": "佔領，佔據" },
+    { "word": "occupation", "partOfSpeech": "n.", "chinese": "職業，工作" },
+    { "word": "kilometer", "partOfSpeech": "n.", "chinese": "公里" },
+    { "word": "numerous", "partOfSpeech": "adj.", "chinese": "許多的" },
+    { "word": "amaze", "partOfSpeech": "v.", "chinese": "使驚嘆，使驚奇" },
+    { "word": "amazement", "partOfSpeech": "n.", "chinese": "驚奇，驚嘆" },
+    { "word": "resourceful", "partOfSpeech": "adj.", "chinese": "足智多謀的" },
+    { "word": "resource", "partOfSpeech": "n.", "chinese": "資源" },
+    { "word": "concrete", "partOfSpeech": "n.", "chinese": "混凝土" },
+    { "word": "concrete", "partOfSpeech": "adj.", "chinese": "確實的，具體的" },
+    { "word": "brick", "partOfSpeech": "n.", "chinese": "磚頭" },
+    { "word": "neighborhood", "partOfSpeech": "n.", "chinese": "鄰里，街訪" },
+    { "word": "neighbor", "partOfSpeech": "n.", "chinese": "鄰居" },
+    { "word": "imagine", "partOfSpeech": "v.", "chinese": "想像" },
+    { "word": "imagination", "partOfSpeech": "n.", "chinese": "想像力" },
+    { "word": "imaginary", "partOfSpeech": "adj.", "chinese": "虛構的，幻想的" },
+    { "word": "imaginative", "partOfSpeech": "adj.", "chinese": "富有想像力的" },
+    { "word": "supply", "partOfSpeech": "v.", "chinese": "提供，供應" },
+    { "word": "supply", "partOfSpeech": "n.", "chinese": "供應量" },
+    { "word": "nearby", "partOfSpeech": "adv.", "chinese": "在附近" },
+    { "word": "nearby", "partOfSpeech": "adj.", "chinese": "附近的" },
+    { "word": "squeeze", "partOfSpeech": "v.", "chinese": "擠進，擠過" },
+    { "word": "squeeze", "partOfSpeech": "v.", "chinese": "擠出，擰出" },
+    { "word": "squeeze", "partOfSpeech": "n.", "chinese": "擠壓，捏" },
+    { "word": "fulfill", "partOfSpeech": "v.", "chinese": "履行，實現" },
+    { "word": "fulfillment", "partOfSpeech": "n.", "chinese": "履行，實現" },
+    { "word": "violent", "partOfSpeech": "adj.", "chinese": "暴力的" },
+    { "word": "violence", "partOfSpeech": "n.", "chinese": "暴力，暴行" },
+    { "word": "occasionally", "partOfSpeech": "adv.", "chinese": "偶爾，有時候" },
+    { "word": "occasional", "partOfSpeech": "adj.", "chinese": "偶爾的" },
+    { "word": "occasion", "partOfSpeech": "n.", "chinese": "時刻，時機" },
+    { "word": "narrow", "partOfSpeech": "adj.", "chinese": "狹窄的" },
+    { "word": "narrow", "partOfSpeech": "v.", "chinese": "變窄，縮窄" },
+    { "word": "gesture", "partOfSpeech": "n.", "chinese": "表示，姿態" },
+    { "word": "gesture", "partOfSpeech": "n.", "chinese": "手勢，姿勢" },
+    { "word": "expense", "partOfSpeech": "n.", "chinese": "開銷" },
+    { "word": "generate", "partOfSpeech": "v.", "chinese": "產生，創造" },
+    { "word": "skyscraper", "partOfSpeech": "n.", "chinese": "摩天大樓" },
+    { "word": "contrast", "partOfSpeech": "n.", "chinese": "對照，比對" },
+    { "word": "contrast", "partOfSpeech": "v.", "chinese": "對照，對比" },
+    { "word": "wealth", "partOfSpeech": "n.", "chinese": "財富，錢財" },
+    { "word": "wealthy", "partOfSpeech": "adj.", "chinese": "富有的，富裕的" },
+    { "word": "generous", "partOfSpeech": "adj.", "chinese": "慷慨的，大方的" },
+    { "word": "generosity", "partOfSpeech": "n.", "chinese": "慷慨，大方" }
+
+
+            ]
+        };
+
+        unitSelector.addEventListener('change', function () {
+            const selectedUnit = this.value;
+            let words = [];
+
+            if (selectedUnit === 'U4~U6') {
+                words = Object.values(vocabularyData).flat();
+            } else if (vocabularyData[selectedUnit]) {
+                words = vocabularyData[selectedUnit];
+            }
+
+            displayVocabularyTable(words);
+        });
+
+        function groupWordsByFirstLetter(words) {
+            const grouped = {};
+            words.forEach(word => {
+                const firstLetter = word.word[0].toLowerCase();
+                if (!grouped[firstLetter]) {
+                    grouped[firstLetter] = [];
+                }
+                grouped[firstLetter].push(word);
+            });
+            return grouped;
+        }
+
+
+        function createBlankWord(word) {
+            const firstLetter = word[0];
+            const lastLetter = word[word.length - 1];
+            if (word.length <= 2) {
+                return firstLetter + '_';
+            }
+            const middlePart = '_'.repeat(word.length - 2);
+            return firstLetter + middlePart + lastLetter;
+        }
+
+      
+        function displayVocabularyTable(words) {
+            if (words.length > 0) {
+                const groupedWords = groupWordsByFirstLetter(words);
+                const sortedFirstLetters = Object.keys(groupedWords).sort();
+
+                let tableHTML = '';
+                sortedFirstLetters.forEach(firstLetter => {
+                    tableHTML += `
+                        <div class="first-letter-section">
+                            <h2>${firstLetter.toUpperCase()}</h2>
+                            <div class="table-container">
+                                <table>
+                                    <tr>
+                                        <th>單字</th>
+                                        <th>詞性</th>
+                                        <th>中文</th>
+                                        <th>填空</th>
+                                    </tr>
+                    `;
+                    const sortedWords = groupedWords[firstLetter].sort((a, b) =>
+                        a.word.localeCompare(b.word)
+                    );
+                    sortedWords.forEach(word => {
+                        const blankWord = createBlankWord(word.word);
+                        tableHTML += `
+                            <tr>
+                                <td>${word.word}</td>
+                                <td>${word.partOfSpeech}</td>
+                                <td>${word.chinese}</td>
+                                <td><span class="fill-in-blank" onclick="revealWord(this, '${word.word}')">${blankWord}</span></td>
+                            </tr>
+                        `;
+                    });
+                    tableHTML += '</table></div></div>';
+                });
+
+                vocabularyTable.innerHTML = tableHTML;
+            } else {
+                vocabularyTable.innerHTML = '<p>請選擇一個單元來顯示單字</p>';
+            }
+        }
+
+        function revealWord(element, word) {
+            element.textContent = word;
+            element.style.color = 'blue';
+            setTimeout(() => {
+                element.textContent = createBlankWord(word);
+                element.style.color = 'black';
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            vocabularyTable.innerHTML = '<p>請選擇一個單元來顯示單字</p>';
+        });
+    </script>
+
+</body>
+
+</html>

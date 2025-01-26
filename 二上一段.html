@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單字學習網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .first-letter-section {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        table {
+
+            width: 400px;
+            border-collapse: collapse;
+            table-layout: auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 30%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 10%;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 30%;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 30%;
+        }
+
+        .fill-in-blank {
+            font-family: monospace;
+            font-size: 1.2em;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+        }
+
+        .fill-in-blank:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>U1~U3單字</h1>
+    </header>
+
+    <main>
+        <select id="unitSelector">
+            <option value="">請選擇單元</option>
+            <option value="U1">U1</option>
+            <option value="U2">U2</option>
+            <option value="U3">U3</option>
+            <option value="U1~U3">U1~U3</option>
+        </select>
+        <div id="vocabularyTable"><p>請選擇一個單元來顯示單字</p></div>
+    </main>
+
+    <footer>
+        <p>因為網站單字為全手打，可能會有錯誤<br>如若發現錯誤請email給 <a
+                href="mailto:s210113@email.nlhs.tyc.edu.tw">s210113@email.nlhs.tyc.edu.tw</a></p>
+    </footer>
+
+    <script>
+        const unitSelector = document.getElementById('unitSelector');
+        const vocabularyTable = document.getElementById('vocabularyTable');
+
+        const vocabularyData = {
+            'U1': [
+                { word: 'resident', partOfSpeech: 'n.', chinese: '居民' },
+                { word: 'facility', partOfSpeech: 'n.', chinese: '設施，場地，機構' },
+                { word: 'evolve', partOfSpeech: 'v.', chinese: '使逐步形成，發展' },
+                { word: 'evolution', partOfSpeech: 'n.', chinese: '發展，進化' },
+                { word: 'vision', partOfSpeech: 'n.', chinese: '願景，視力' },
+                { word: 'concept', partOfSpeech: 'n.', chinese: '概念，觀念' },
+                { word: 'access', partOfSpeech: 'n.', chinese: '途徑' },
+                { word: 'access', partOfSpeech: 'v.', chinese: '取得，使用，存取，讀取' },
+                { word: 'education', partOfSpeech: 'n.', chinese: '教育' },
+                { word: 'educational', partOfSpeech: 'adj.', chinese: '教育的' },
+                { word: 'educate', partOfSpeech: 'v.', chinese: '教育' },
+                { word: 'equal', partOfSpeech: 'adj.', chinese: '平等的，同樣的，相等的' },
+                { word: 'equal', partOfSpeech: 'v.', chinese: '等於，與…相等' },
+                { word: 'equality', partOfSpeech: 'n.', chinese: '平等，均等' },
+                { word: 'admission', partOfSpeech: 'n.', chinese: '准許進入' },
+                { word: 'consult', partOfSpeech: 'v.', chinese: '查閱，諮詢' },
+                { word: 'consultant', partOfSpeech: 'n.', chinese: '顧問' },
+                { word: 'insight', partOfSpeech: 'n.', chinese: '了解，洞悉，洞察力' },
+                { word: 'accommodate', partOfSpeech: 'v.', chinese: '容納，提供膳宿' },
+                { word: 'accommodations', partOfSpeech: 'n.', chinese: '住處' },
+                { word: 'distribute', partOfSpeech: 'v.', chinese: '分配，散布' },
+                { word: 'distribution', partOfSpeech: 'n.', chinese: '分配，配給' },
+                { word: 'emergency', partOfSpeech: 'n.', chinese: '緊急狀況' },
+                { word: 'integrate', partOfSpeech: 'v.', chinese: '使融合，使成為一體' },
+                { word: 'integration', partOfSpeech: 'n.', chinese: '融合' },
+                { word: 'remotely', partOfSpeech: 'adv.', chinese: '從遠處地，遠端點' },
+                { word: 'remote', partOfSpeech: 'adj.', chinese: '遙遠的，偏僻的' },
+                { word: 'route', partOfSpeech: 'n.', chinese: '路線' },
+                { word: 'warn', partOfSpeech: 'v.', chinese: '警告，告誡' },
+                { word: 'adjust', partOfSpeech: 'v.', chinese: '調整' },
+                { word: 'adjustment', partOfSpeech: 'n.', chinese: '提高，增強' },
+                { word: 'enhance', partOfSpeech: 'v.', chinese: '建立，創辦' },
+                { word: 'establish', partOfSpeech: 'v.', chinese: '建立，創辦' },
+                { word: 'establishment', partOfSpeech: 'n.', chinese: '機構' },
+                { word: 'summary', partOfSpeech: 'n.', chinese: '概要' },
+                { word: 'summarize', partOfSpeech: 'v.', chinese: '總結' },
+                { word: 'crucial', partOfSpeech: 'adj.', chinese: '關鍵的' },
+                { word: 'vital', partOfSpeech: 'adj.', chinese: '極重要的，不缺少的，生命的，維持生命必須的' },
+                { word: 'aid', partOfSpeech: 'n.', chinese: '援助，援助' },
+                { word: 'aid', partOfSpeech: 'v.', chinese: '幫助，支援' },
+                { word: 'overestimate', partOfSpeech: 'v.', chinese: '高估' },
+                { word: 'estimate', partOfSpeech: 'v.', chinese: '估算，估計' },
+                { word: 'estimate', partOfSpeech: 'n.', chinese: '估算，估計' }
+            ],
+            'U2': [
+                { word: 'progress', partOfSpeech: 'v.', chinese: '進步，進展' },
+                { word: 'progress', partOfSpeech: 'n.', chinese: '進步，進展' },
+                { word: 'danger', partOfSpeech: 'n.', chinese: '危險因素，危險性' },
+                { word: 'term', partOfSpeech: 'n.', chinese: '用語，術語' },
+                { word: 'capability', partOfSpeech: 'n.', chinese: '能力，才能' },
+                { word: 'capable', partOfSpeech: 'adj.', chinese: '有能力的，能…的' },
+                { word: 'transform', partOfSpeech: 'v.', chinese: '徹底改變' },
+                { word: 'conventional', partOfSpeech: 'adj.', chinese: '慣例的，傳統的' },
+                { word: 'convention', partOfSpeech: 'n.', chinese: '慣例，習俗' },
+                { word: 'assistant', partOfSpeech: 'n.', chinese: '助理，助手' },
+                { word: 'assist', partOfSpeech: 'v.', chinese: '幫助，協助' },
+                { word: 'assistance', partOfSpeech: 'n.', chinese: '幫助，協助' },
+                { word: 'acquire', partOfSpeech: 'v.', chinese: '習得，學到' },
+                { word: 'instant', partOfSpeech: 'adj.', chinese: '立即的，馬上的' },
+                { word: 'feedback', partOfSpeech: 'n.', chinese: '意見回饋' },
+                { word: 'prompt', partOfSpeech: 'n.', chinese: '指令，提示' },
+                { word: 'prompt', partOfSpeech: 'v.', chinese: '促使' },
+                { word: 'prompt', partOfSpeech: 'adj.', chinese: '迅速的，立即的' },
+                { word: 'journey', partOfSpeech: 'n.', chinese: '經歷，路程，旅行，行程' },
+                { word: 'sector', partOfSpeech: 'n.', chinese: '部門，領域' },
+                { word: 'productivity', partOfSpeech: 'n.', chinese: '生產率' },
+                { word: 'productive', partOfSpeech: 'adj.', chinese: '富有成效的' },
+                { word: 'sacrifice', partOfSpeech: 'v.', chinese: '犧牲，獻出' },
+                { word: 'sacrifice', partOfSpeech: 'n.', chinese: '犧牲' },
+                { word: 'security', partOfSpeech: 'n.', chinese: '安全' },
+                { word: 'secure', partOfSpeech: 'adj.', chinese: '安全無虞的' },
+                { word: 'secure', partOfSpeech: 'v.', chinese: '獲得' },
+                { word: 'analyze', partOfSpeech: 'v.', chinese: '分析' },
+                { word: 'analysis', partOfSpeech: 'n.', chinese: '分析' },
+                { word: 'risk', partOfSpeech: 'n.', chinese: '潛在危險，風險' },
+                { word: 'technique', partOfSpeech: 'n.', chinese: '技術，技能' },
+                { word: 'rapidly', partOfSpeech: 'adv.', chinese: '快速地，迅速地' },
+                { word: 'rapid', partOfSpeech: 'adj.', chinese: '快速的，迅速的' },
+                { word: 'identify', partOfSpeech: 'v.', chinese: '發現，找到，指認，確認' },
+                { word: 'identification', partOfSpeech: 'n.', chinese: '辨認，鑑定' },
+                { word: 'ignore', partOfSpeech: 'v.', chinese: '忽視，不注意' },
+                { word: 'expectation', partOfSpeech: 'n.', chinese: '期待，預期' }
+            ],
+            'U3': [
+                { word: 'involved', partOfSpeech: 'adj.', chinese: '涉及的，有關的' },
+                { word: 'involve', partOfSpeech: 'v.', chinese: '包含，需要' },
+                { word: 'involvement', partOfSpeech: 'n.', chinese: '參與，涉入' },
+                { word: 'serve', partOfSpeech: 'v.', chinese: '任職，擔任，提供，供應' },
+                { word: 'overcome', partOfSpeech: 'v.', chinese: '克服' },
+                { word: 'potential', partOfSpeech: 'n.', chinese: '潛力，潛能' },
+                { word: 'potential', partOfSpeech: 'adj.', chinese: '可能的，潛在的' },
+                { word: 'firm', partOfSpeech: 'adj.', chinese: '堅決的，堅定的，堅固的' },
+                { word: 'firm', partOfSpeech: 'n.', chinese: '公司，商號' },
+                { word: 'limitation', partOfSpeech: 'n.', chinese: '限制，制定' },
+                { word: 'impose', partOfSpeech: 'v.', chinese: '強加於，強制執行' },
+                { word: 'elect', partOfSpeech: 'v.', chinese: '推選，選舉' },
+                { word: 'election', partOfSpeech: 'n.', chinese: '選舉' },
+                { word: 'voting', partOfSpeech: 'n.', chinese: '投票' },
+                { word: 'vote', partOfSpeech: 'v.', chinese: '投票，進行表決' },
+                { word: 'vote', partOfSpeech: 'n.', chinese: '選票，表決意見' },
+                { word: 'permit', partOfSpeech: 'v.', chinese: '允許，許可' },
+                { word: 'permission', partOfSpeech: 'n.', chinese: '允許，許可' },
+                { word: 'criticize', partOfSpeech: 'v.', chinese: '批判，批評' },
+                { word: 'criticism', partOfSpeech: 'n.', chinese: '批判，批評' },
+                { word: 'praise', partOfSpeech: 'v.', chinese: '讚揚，表揚' },
+                { word: 'praise', partOfSpeech: 'n.', chinese: '讚揚，表揚' },
+                { word: 'entrance', partOfSpeech: 'n.', chinese: '入口，大門' },
+                { word: 'refugee', partOfSpeech: 'n.', chinese: '難民' },
+                { word: 'employ', partOfSpeech: 'v.', chinese: '雇用' },
+                { word: 'employment', partOfSpeech: 'n.', chinese: '就業受雇' },
+                { word: 'employee', partOfSpeech: 'n.', chinese: '雇員，員工' },
+                { word: 'employer', partOfSpeech: 'n.', chinese: '雇主' },
+                { word: 'resign', partOfSpeech: 'v.', chinese: '辭職' },
+                { word: 'resignation', partOfSpeech: 'n.', chinese: '辭職' },
+                { word: 'relocate', partOfSpeech: 'v.', chinese: '搬遷，遷移' },
+                { word: 'locate', partOfSpeech: 'v.', chinese: '定位' },
+                { word: 'inspire', partOfSpeech: 'v.', chinese: '激勵，鼓勵' },
+                { word: 'inspiration', partOfSpeech: 'n.', chinese: '鼓舞人心的人、事物，靈感' },
+                { word: 'female', partOfSpeech: 'adj.', chinese: '女性的、雌性的' },
+                { word: 'female', partOfSpeech: 'n.', chinese: '女人、女性' },
+                { word: 'percentage', partOfSpeech: 'n.', chinese: '百分比，比例' },
+                { word: 'percent', partOfSpeech: 'n.', chinese: '百分之一' },
+                { word: 'ultimately', partOfSpeech: 'adv.', chinese: '最後，最終' },
+                { word: 'ultimate', partOfSpeech: 'adj.', chinese: '最後的，最終的' },
+                { word: 'ongoing', partOfSpeech: 'adj.', chinese: '持續的，不斷的' },
+                { word: 'motivate', partOfSpeech: 'v.', chinese: '激勵，激發' },
+                { word: 'motivation', partOfSpeech: 'n.', chinese: '積極性，動機' },
+                { word: 'pursue', partOfSpeech: 'v.', chinese: '追求，從事' },
+                { word: 'pursuit', partOfSpeech: 'n.', chinese: '追求，尋求' }
+            ]
+        };
+
+        // 監聽選單變化
+        unitSelector.addEventListener('change', function () {
+            const selectedUnit = this.value;
+            let words = [];
+
+            if (selectedUnit === 'U1~U3') {
+                words = Object.values(vocabularyData).flat();
+            } else if (vocabularyData[selectedUnit]) {
+                words = vocabularyData[selectedUnit];
+            }
+
+            displayVocabularyTable(words);
+        });
+
+        // 根據單字的第一個字母分組
+        function groupWordsByFirstLetter(words) {
+            const grouped = {};
+            words.forEach(word => {
+                const firstLetter = word.word[0].toLowerCase();
+                if (!grouped[firstLetter]) {
+                    grouped[firstLetter] = [];
+                }
+                grouped[firstLetter].push(word);
+            });
+            return grouped;
+        }
+
+        // 創建填空的單字，隱藏部分字母
+        function createBlankWord(word) {
+            const firstLetter = word[0];
+            const lastLetter = word[word.length - 1];
+            if (word.length <= 2) {
+                // 如果單字長度小於等於2，僅隱藏最後一個字母
+                return firstLetter + '_';
+            }
+            const middlePart = '_'.repeat(word.length - 2);
+            return firstLetter + middlePart + lastLetter;
+        }
+
+        // 顯示單字表格
+        function displayVocabularyTable(words) {
+            if (words.length > 0) {
+                const groupedWords = groupWordsByFirstLetter(words);
+                const sortedFirstLetters = Object.keys(groupedWords).sort();
+
+                let tableHTML = '';
+                sortedFirstLetters.forEach(firstLetter => {
+                    tableHTML += `
+                        <div class="first-letter-section">
+                            <h2>${firstLetter.toUpperCase()}</h2>
+                            <table>
+                                <tr>
+                                    <th>單字</th>
+                                    <th>詞性</th>
+                                    <th>中文</th>
+                                    <th>填空</th>
+                                </tr>
+                    `;
+                    const sortedWords = groupedWords[firstLetter].sort((a, b) =>
+                        a.word.localeCompare(b.word)
+                    );
+                    sortedWords.forEach(word => {
+                        const blankWord = createBlankWord(word.word);
+                        tableHTML += `
+                            <tr>
+                                <td>${word.word}</td>
+                                <td>${word.partOfSpeech}</td>
+                                <td>${word.chinese}</td>
+                                <td><span class="fill-in-blank" onclick="revealWord(this, '${word.word}')">${blankWord}</span></td>
+                            </tr>
+                        `;
+                    });
+                    tableHTML += '</table></div>';
+                });
+
+                vocabularyTable.innerHTML = tableHTML;
+            } else {
+                vocabularyTable.innerHTML = '<p>請選擇一個單元來顯示單字</p>';
+            }
+        }
+
+        // 揭示完整單字
+        function revealWord(element, word) {
+            element.textContent = word;
+            element.style.color = 'blue';
+            setTimeout(() => {
+                element.textContent = createBlankWord(word);
+                element.style.color = 'black';
+            }, 2000);
+        }
+
+        // 初始化時顯示提示
+        document.addEventListener('DOMContentLoaded', function () {
+            vocabularyTable.innerHTML = '<p>請選擇一個單元來顯示單字</p>';
+        });
+    </script>
+
+</body>
+
+</html>
