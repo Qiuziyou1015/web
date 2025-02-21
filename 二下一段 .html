@@ -105,12 +105,16 @@
         #vocabularyTable {
             width: 100%;
             overflow-x: auto;
+            text-align: center;
         }
 
         .choose{
             text-align: center;
         }
 
+        #vocabularyTable .h{
+            text-align: left;
+        }
         
         
     </style>
@@ -321,7 +325,7 @@
                 sortedFirstLetters.forEach(firstLetter => {
                     tableHTML += `
                         <div class="first-letter-section">
-                            <h2>${firstLetter.toUpperCase()}</h2>
+                            <h2 class = "h">${firstLetter.toUpperCase()}</h2>
                             <table>
                                 <tr>
                                     <th>單字</th>
