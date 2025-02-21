@@ -24,7 +24,7 @@
 
         main {
             flex-grow: 1;
-            padding: 2rem;
+            
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -51,9 +51,10 @@
 
         table {
 
-            width: 300px;
+            width: 100%;
             border-collapse: collapse;
             table-layout: auto;
+            text-align: center;
         }
 
         th,
@@ -105,6 +106,12 @@
             width: 100%;
             overflow-x: auto;
         }
+
+        .choose{
+            text-align: center;
+        }
+
+        
         
     </style>
 </head>
@@ -117,6 +124,7 @@
     </header>
 
     <main>
+        <br>
         <select id="unitSelector">
             <option value="">請選擇單元</option>
             <option value="U1">U1</option>
@@ -125,7 +133,7 @@
             <option value="U1~U3">U1~U3</option>
         </select>
         <div id="vocabularyTable">
-            <p>請選擇一個單元來顯示單字</p>
+            <p class = "choose">請選擇一個單元來顯示單字</p>
         </div>
     </main>
 
@@ -340,7 +348,7 @@
 
                 vocabularyTable.innerHTML = tableHTML;
             } else {
-                vocabularyTable.innerHTML = '<p>請選擇一個單元來顯示單字</p>';
+                vocabularyTable.innerHTML = '<p class = "choose">請選擇一個單元來顯示單字</p>';
             }
         }
 
@@ -355,7 +363,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            vocabularyTable.innerHTML = '<p>請選擇一個單元來顯示單字</p>';
+            vocabularyTable.innerHTML = '<p class = "choose">請選擇一個單元來顯示單字</p>';
         });
     </script>
 
