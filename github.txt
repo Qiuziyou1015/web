@@ -1,0 +1,21 @@
+feat — 新功能
+
+fix — bug fix
+
+chore — 不屬於fix或新功能也沒有修改src或test檔案 一般來說用在更新dependencies
+
+refactor — 重構程式碼
+
+docs — 更新文件像是README或是其他markdown檔案
+
+style — 沒有更動到程式邏輯
+
+test — 修改或新增測試
+
+perf — 改善效能
+
+ci — CI/CD相關
+
+build — build system或external dependencies
+
+revert — revert回上一個commit
