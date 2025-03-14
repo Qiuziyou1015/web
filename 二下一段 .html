@@ -24,7 +24,6 @@
 
         main {
             flex-grow: 1;
-            
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -50,7 +49,6 @@
         }
 
         table {
-
             width: 100%;
             border-collapse: collapse;
             table-layout: auto;
@@ -73,7 +71,7 @@
 
         th:nth-child(1),
         td:nth-child(1) {
-            width: 30%;
+            width: 25%;
         }
 
         th:nth-child(2),
@@ -83,12 +81,17 @@
 
         th:nth-child(3),
         td:nth-child(3) {
-            width: 30%;
+            width: 25%;
         }
 
         th:nth-child(4),
         td:nth-child(4) {
-            width: 30%;
+            width: 20%;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 20%;
         }
 
         .fill-in-blank {
@@ -108,15 +111,17 @@
             text-align: center;
         }
 
-        .choose{
+        .choose {
             text-align: center;
         }
 
-        #vocabularyTable .h{
+        #vocabularyTable .h {
             text-align: left;
         }
-        
-        
+
+        #vioce {
+            width: 15px;
+        }
     </style>
 </head>
 
@@ -137,15 +142,16 @@
             <option value="U1~U3">U1~U3</option>
         </select>
         <div id="vocabularyTable">
-            <p class = "choose">請選擇一個單元來顯示單字</p>
+            <p class="choose">請選擇一個單元來顯示單字</p>
         </div>
         <br>
     </main>
 
     <footer>
         <a href="https://www.instagram.com/webupdatehub/"><img src="ins.png" style="width: 50px"></a>
-        <p>因為網站單字為全手打，可能會有錯誤<br>如若發現錯誤請email給 <a
-                href="mailto:s210113@email.nlhs.tyc.edu.tw">s210113@email.nlhs.tyc.edu.tw</a></p>
+        <p>因為網站單字為全手打，可能會有錯誤<br>如若發現錯誤請 email 給 <a
+                href="mailto:s210113@email.nlhs.tyc.edu.tw">s210113@email.nlhs.tyc.edu.tw</a>
+        </p>
     </footer>
 
     <script>
@@ -279,17 +285,14 @@
             ]
         };
 
-
         unitSelector.addEventListener('change', function () {
             const selectedUnit = this.value;
             let words = [];
-
             if (selectedUnit === 'U1~U3') {
                 words = Object.values(vocabularyData).flat();
             } else if (vocabularyData[selectedUnit]) {
                 words = vocabularyData[selectedUnit];
             }
-
             displayVocabularyTable(words);
         });
 
@@ -305,7 +308,6 @@
             return grouped;
         }
 
-
         function createBlankWord(word) {
             const firstLetter = word[0];
             const lastLetter = word[word.length - 1];
@@ -320,12 +322,11 @@
             if (words.length > 0) {
                 const groupedWords = groupWordsByFirstLetter(words);
                 const sortedFirstLetters = Object.keys(groupedWords).sort();
-
                 let tableHTML = '';
                 sortedFirstLetters.forEach(firstLetter => {
                     tableHTML += `
                         <div class="first-letter-section">
-                            <h2 class = "h">${firstLetter.toUpperCase()}</h2>
+                            <h2 class="h">${firstLetter.toUpperCase()}</h2>
                             <table>
                                 <tr>
                                     <th>單字</th>
@@ -341,23 +342,20 @@
                         const blankWord = createBlankWord(word.word);
                         tableHTML += `
                             <tr>
-                                <td>${word.word}</td>
+                                <td>${word.word} <a onclick="playAudio('${word.word}')"><img src="聲音.png" id = "vioce"></a></td>
                                 <td>${word.partOfSpeech}</td>
                                 <td>${word.chinese}</td>
                                 <td><span class="fill-in-blank" onclick="revealWord(this, '${word.word}')">${blankWord}</span></td>
                             </tr>
                         `;
                     });
-                    tableHTML += "<br>"
                     tableHTML += '</table></div>';
                 });
-
                 vocabularyTable.innerHTML = tableHTML;
             } else {
-                vocabularyTable.innerHTML = '<p class = "choose">請選擇一個單元來顯示單字</p>';
+                vocabularyTable.innerHTML = '<p class="choose">請選擇一個單元來顯示單字</p>';
             }
         }
-
 
         function revealWord(element, word) {
             element.textContent = word;
@@ -368,8 +366,13 @@
             }, 2000);
         }
 
+        function playAudio(word) {
+            const audio = new Audio(`gtts_audio_files/${word}.mp3`);
+            audio.play();
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
-            vocabularyTable.innerHTML = '<p class = "choose">請選擇一個單元來顯示單字</p>';
+            vocabularyTable.innerHTML = '<p class="choose">請選擇一個單元來顯示單字</p>';
         });
     </script>
 
