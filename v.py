@@ -4,8 +4,7 @@ import zipfile
 
 
 words = [
-    "navigate", "satellite", "primitive", "ancestor", "rely", "acute", "magnetic", "dedicate", "pursuit", "disgust", "nutrient", "indispensable", "storage", "expertise", "collector", "scent", "earnest", "obediently", "drill", "economic", "occupation", "initial", "recite", "procedure", "forgetful", "retain", "illustrate", "continent", "vividly", "clarify", "cram", "deadline", "adequate", "foundation", "gap", "session", "diligence", "attribute", "conduct", "detect", "symmetry", "consult", "galaxy", "divert"
-
+    "navigate", "satellite", "primitive", "ancestor", "rely", "acute", "magnetic", "dedicate", "pursuit", "disgust", "nutrient", "indispensable", "storage", "expertise", "collector", "scent", "earnest", "obediently", "drill", "economic", "occupation", "initial", "recite", "procedure", "forgetful", "retain", "illustrate", "continent", "vividly", "clarify", "cram", "deadline", "adequate", "foundation", "gap", "session", "diligence", "attribute", "conduct", "detect", "symmetry", "consult", "galaxy", "divert", "hesitation", "discard", "issue", "ton", "heap", "exclude", "substantial", "economically", "emission", "intend", "ban", "initiate", "inspect", "reflect", "institute", "livestock", "cooperation", "mission", "tempt", "guideline", "gobble"
 
 ]
 
