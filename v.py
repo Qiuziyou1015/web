@@ -4,26 +4,12 @@ import zipfile
 
 
 words = [
-    "workforce", "industrialized", "industrialize", "dramatic", "flourish", "fade",
-    "prominence", "prominent", "generation", "decade", "physical", "symbolize",
-    "symbolic", "rural", "specialize", "specialty", "modify", "boom", "manufacturing",
-    "manufacturer", "era", "significance", "significant", "apprentice", "alter",
-    "reflect", "reflection", "reflective", "transition", "transit", "category",
-    "categorize", "arise",
-    "journalist", "journal", "genuine", "neglected", "neglect", "misunderstood",
-    "misunderstand", "promote", "promotion", "assumption", "assume", "discrimination",
-    "discriminate", "transformation", "compassionate", "compassion", "alternatively",
-    "alternative", "flee", "extraordinary", "remarkable", "remark", "glimpse",
-    "undoubtedly", "dissolve", "replace", "replacement", "sweat", "beneath",
-    "disability", "immigrant", "immigrate", "retire", "retirement", "initially",
-    "initial", "norms",
-    "bang", "insult", "addict", "addicted", "stare", "stride", "mentor", "zone",
-    "locker", "toss", "aside", "breeze", "absolute", "chaos", "rival", "assign",
-    "assignment", "translate", "translation", "trauma", "mighty", "sword", "release",
-    "hatred", "aggressive", "blossom", "dare"
+    "navigate", "satellite", "primitive", "ancestor", "rely", "acute", "magnetic", "dedicate", "pursuit", "disgust", "nutrient", "indispensable", "storage", "expertise", "collector", "scent", "earnest", "obediently", "drill", "economic", "occupation", "initial", "recite", "procedure", "forgetful", "retain", "illustrate", "continent", "vividly", "clarify", "cram", "deadline", "adequate", "foundation", "gap", "session", "diligence", "attribute", "conduct", "detect", "symmetry", "consult", "galaxy", "divert"
+
+
 ]
 
-output_dir = "gtts_audio_files"
+output_dir = "audio"
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
