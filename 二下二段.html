@@ -3,6 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTNBHTKJC7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WTNBHTKJC7');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>單字學習網站</title>
     <style>
@@ -136,9 +145,9 @@
         <br>
         <select id="unitSelector">
             <option value="">請選擇單元</option>
-            <option value="U1">U1</option>
-            <option value="U2">U2</option>
-            <option value="U3">U3</option>
+            <option value="U1">U4</option>
+            <option value="U2">U5</option>
+            <option value="U3">U6</option>
             <option value="U1~U3">U1~U3</option>
             <option value="U4">英雜U1</option>
             <option value="U5">英雜U2</option>
@@ -170,13 +179,147 @@
 
         const vocabularyData = {
             'U1': [
-
+                { "word": "virtual", "partOfSpeech": "adj.", "chinese": "虛擬的" },
+                { "word": "entertainer", "partOfSpeech": "n.", "chinese": "表演者，藝人" },
+                { "word": "entertain", "partOfSpeech": "v.", "chinese": "娛樂" },
+                { "word": "entertainment", "partOfSpeech": "n.", "chinese": "娛樂" },
+                { "word": "utilize", "partOfSpeech": "v.", "chinese": "應用，利用" },
+                { "word": "content", "partOfSpeech": "n.", "chinese": "內容" },
+                { "word": "contents", "partOfSpeech": "n.", "chinese": "內容物" },
+                { "word": "viewer", "partOfSpeech": "n.", "chinese": "觀眾" },
+                { "word": "notable", "partOfSpeech": "adj.", "chinese": "顯著的，值得注意的" },
+                { "word": "popularity", "partOfSpeech": "n.", "chinese": "流行" },
+                { "word": "adventure", "partOfSpeech": "n.", "chinese": "冒險" },
+                { "word": "frequently", "partOfSpeech": "adv.", "chinese": "常常地，頻繁地" },
+                { "word": "frequent", "partOfSpeech": "adj.", "chinese": "常常的，頻繁的" },
+                { "word": "frequency", "partOfSpeech": "n.", "chinese": "頻率" },
+                { "word": "constant", "partOfSpeech": "adj.", "chinese": "持續不斷的，經常的" },
+                { "word": "subscriber", "partOfSpeech": "n.", "chinese": "訂閱者" },
+                { "word": "subscribe", "partOfSpeech": "v.", "chinese": "訂閱" },
+                { "word": "debut", "partOfSpeech": "v.", "chinese": "首次亮相" },
+                { "word": "debut", "partOfSpeech": "n.", "chinese": "首演" },
+                { "word": "dynamic", "partOfSpeech": "adj.", "chinese": "不斷變化的" },
+                { "word": "dynamic", "partOfSpeech": "adj.", "chinese": "精力充沛的" },
+                { "word": "bond", "partOfSpeech": "n.", "chinese": "連結，關係" },
+                { "word": "bond", "partOfSpeech": "v.", "chinese": "使黏合，結合" },
+                { "word": "comment", "partOfSpeech": "n.", "chinese": "評論，意見" },
+                { "word": "comment", "partOfSpeech": "v.", "chinese": "評論，表達意見" },
+                { "word": "chat", "partOfSpeech": "n.", "chinese": "閒聊，聊天" },
+                { "word": "chat", "partOfSpeech": "v.", "chinese": "閒聊，聊天" },
+                { "word": "companionship", "partOfSpeech": "n.", "chinese": "陪伴，情誼" },
+                { "word": "companion", "partOfSpeech": "n.", "chinese": "同伴，夥伴" },
+                { "word": "loyal", "partOfSpeech": "adj.", "chinese": "忠實的，忠誠的" },
+                { "word": "loyalty", "partOfSpeech": "n.", "chinese": "忠誠，忠實" },
+                { "word": "accessibility", "partOfSpeech": "n.", "chinese": "易得到，易觸及" },
+                { "word": "accessible", "partOfSpeech": "adj.", "chinese": "可接近的，可得到的" },
+                { "word": "visa", "partOfSpeech": "n.", "chinese": "簽證" },
+                { "word": "notification", "partOfSpeech": "n.", "chinese": "通知(訊息)" },
+                { "word": "notification", "partOfSpeech": "n.", "chinese": "(正式)通知，告示" },
+                { "word": "notify", "partOfSpeech": "v.", "chinese": "(正式)告知" },
+                { "word": "signal", "partOfSpeech": "v.", "chinese": "示意" },
+                { "word": "signal", "partOfSpeech": "n.", "chinese": "信號" },
+                { "word": "lively", "partOfSpeech": "adj.", "chinese": "熱烈的" },
+                { "word": "lively", "partOfSpeech": "adj.", "chinese": "活潑的，精力充沛的" },
+                { "word": "span", "partOfSpeech": "v.", "chinese": "跨越(區域)" },
+                { "word": "span", "partOfSpeech": "v.", "chinese": "跨越(時間)" },
+                { "word": "span", "partOfSpeech": "n.", "chinese": "一段時間" },
+                { "word": "ecosystem", "partOfSpeech": "n.", "chinese": "生態系統" }
             ],
             'U2': [
-
+                { "word": "nuclear", "partOfSpeech": "adj.", "chinese": "核子武器的" },
+                { "word": "nuclear", "partOfSpeech": "adj.", "chinese": "核能的" },
+                { "word": "genius", "partOfSpeech": "n.", "chinese": "天才" },
+                { "word": "genius", "partOfSpeech": "n.", "chinese": "天賦，才華" },
+                { "word": "atomic", "partOfSpeech": "adj.", "chinese": "原子(能)的" },
+                { "word": "atom", "partOfSpeech": "n.", "chinese": "原子" },
+                { "word": "bomb", "partOfSpeech": "n.", "chinese": "炸彈" },
+                { "word": "bomb", "partOfSpeech": "v.", "chinese": "轟炸" },
+                { "word": "invasion", "partOfSpeech": "n.", "chinese": "入侵，侵略" },
+                { "word": "invade", "partOfSpeech": "v.", "chinese": "入侵" },
+                { "word": "horror", "partOfSpeech": "n.", "chinese": "令人驚恐的事" },
+                { "word": "horror", "partOfSpeech": "n.", "chinese": "恐懼，震驚" },
+                { "word": "document", "partOfSpeech": "v.", "chinese": "記錄，記載" },
+                { "word": "document", "partOfSpeech": "n.", "chinese": "文件，公文" },
+                { "word": "invent", "partOfSpeech": "v.", "chinese": "發明，創造" },
+                { "word": "invention", "partOfSpeech": "n.", "chinese": "發明" },
+                { "word": "invention", "partOfSpeech": "n.", "chinese": "發明物" },
+                { "word": "inventor", "partOfSpeech": "n.", "chinese": "發明家" },
+                { "word": "weapon", "partOfSpeech": "n.", "chinese": "武器" },
+                { "word": "tension", "partOfSpeech": "n.", "chinese": "(精神上的)緊張" },
+                { "word": "tense", "partOfSpeech": "adj.", "chinese": "緊張的" },
+                { "word": "wrestle", "partOfSpeech": "v.", "chinese": "艱難對付" },
+                { "word": "stunning", "partOfSpeech": "adj.", "chinese": "令人驚嘆的" },
+                { "word": "stun", "partOfSpeech": "v.", "chinese": "使震驚" },
+                { "word": "audio", "partOfSpeech": "adj.", "chinese": "音頻的" },
+                { "word": "capture", "partOfSpeech": "v.", "chinese": "捕捉" },
+                { "word": "capture", "partOfSpeech": "v.", "chinese": "佔領" },
+                { "word": "capture", "partOfSpeech": "n.", "chinese": "捕獲" },
+                { "word": "subjective", "partOfSpeech": "adj.", "chinese": "主觀的" },
+                { "word": "ethical", "partOfSpeech": "adj.", "chinese": "道德的" },
+                { "word": "portray", "partOfSpeech": "v.", "chinese": "描繪" },
+                { "word": "explosion", "partOfSpeech": "n.", "chinese": "爆炸" },
+                { "word": "explosive", "partOfSpeech": "adj.", "chinese": "爆炸性的" },
+                { "word": "explode", "partOfSpeech": "v.", "chinese": "(使)爆炸" },
+                { "word": "quote", "partOfSpeech": "v.", "chinese": "引用" },
+                { "word": "quote", "partOfSpeech": "n.", "chinese": "引文" },
+                { "word": "destroyer", "partOfSpeech": "n.", "chinese": "摧毀者，破壞者" },
+                { "word": "destroy", "partOfSpeech": "v.", "chinese": "破壞，毀滅" },
+                { "word": "destruction", "partOfSpeech": "n.", "chinese": "破壞，毀滅" },
+                { "word": "realization", "partOfSpeech": "n.", "chinese": "明白" },
+                { "word": "profound", "partOfSpeech": "adj.", "chinese": "思想深遠的" },
+                { "word": "profound", "partOfSpeech": "adj.", "chinese": "強烈的，極度的" },
+                { "word": "consequence", "partOfSpeech": "n.", "chinese": "結果" },
+                { "word": "weave", "partOfSpeech": "v.", "chinese": "編造，把...編進" },
+                { "word": "weave", "partOfSpeech": "v.", "chinese": "編織" },
+                { "word": "weave", "partOfSpeech": "n.", "chinese": "編織法" },
+                { "word": "renewed", "partOfSpeech": "adj.", "chinese": "重新產生的" },
+                { "word": "renew", "partOfSpeech": "v.", "chinese": "更換，更新" },
+                { "word": "implication", "partOfSpeech": "n.", "chinese": "影響，後果" }
             ],
             'U3': [
-
+                { "word": "perception", "partOfSpeech": "n.", "chinese": "感知" },
+                { "word": "perceive", "partOfSpeech": "n.", "chinese": "感知" },
+                { "word": "perceive", "partOfSpeech": "v.", "chinese": "察覺" },
+                { "word": "random", "partOfSpeech": "adj.", "chinese": "隨機的" },
+                { "word": "attribute", "partOfSpeech": "v.", "chinese": "歸因於" },
+                { "word": "mystery", "partOfSpeech": "n.", "chinese": "難以理解的事物" },
+                { "word": "mysterious", "partOfSpeech": "adj.", "chinese": "神秘的" },
+                { "word": "clue", "partOfSpeech": "n.", "chinese": "線索" },
+                { "word": "clue", "partOfSpeech": "n.", "chinese": "提示" },
+                { "word": "shadow", "partOfSpeech": "n.", "chinese": "陰影" },
+                { "word": "shadow", "partOfSpeech": "v.", "chinese": "跟蹤" },
+                { "word": "surrounding", "partOfSpeech": "adj.", "chinese": "周圍的" },
+                { "word": "surroundings", "partOfSpeech": "n.", "chinese": "周圍環境" },
+                { "word": "surround", "partOfSpeech": "v.", "chinese": "環繞，圍繞" },
+                { "word": "interpretation", "partOfSpeech": "n.", "chinese": "理解，闡釋" },
+                { "word": "interpret", "partOfSpeech": "v.", "chinese": "解釋，詮釋" },
+                { "word": "infer", "partOfSpeech": "v.", "chinese": "推斷，推論" },
+                { "word": "deceive", "partOfSpeech": "v.", "chinese": "欺騙" },
+                { "word": "depict", "partOfSpeech": "v.", "chinese": "描繪" },
+                { "word": "dimly", "partOfSpeech": "adv.", "chinese": "昏暗地，微弱地" },
+                { "word": "dim", "partOfSpeech": "adj.", "chinese": "(燈光)昏暗的" },
+                { "word": "dim", "partOfSpeech": "v.", "chinese": "變昏暗，變暗淡" },
+                { "word": "illuminate", "partOfSpeech": "v.", "chinese": "照亮，為...照明" },
+                { "word": "theory", "partOfSpeech": "n.", "chinese": "學說，理論" },
+                { "word": "speculate", "partOfSpeech": "v.", "chinese": "猜測，推測" },
+                { "word": "noticeable", "partOfSpeech": "adj.", "chinese": "明顯的，顯而易見的" },
+                { "word": "blurred", "partOfSpeech": "adj.", "chinese": "模糊的" },
+                { "word": "blur", "partOfSpeech": "v.", "chinese": "變模糊" },
+                { "word": "blur", "partOfSpeech": "n.", "chinese": "模糊的東西" },
+                { "word": "outline", "partOfSpeech": "n.", "chinese": "輪廓" },
+                { "word": "outline", "partOfSpeech": "n.", "chinese": "大綱，摘要" },
+                { "word": "outline", "partOfSpeech": "v.", "chinese": "略述，概括" },
+                { "word": "faint", "partOfSpeech": "adj.", "chinese": "微弱的，不清晰的" },
+                { "word": "faint", "partOfSpeech": "v.", "chinese": "昏厥，暈倒" },
+                { "word": "faint", "partOfSpeech": "n.", "chinese": "昏厥，暈倒" },
+                { "word": "concentrate", "partOfSpeech": "v.", "chinese": "專注，專心" },
+                { "word": "concentration", "partOfSpeech": "n.", "chinese": "全神貫注" },
+                { "word": "comprehend", "partOfSpeech": "v.", "chinese": "充分理解，領悟" },
+                { "word": "comprehension", "partOfSpeech": "n.", "chinese": "理解力，領悟能力" },
+                { "word": "controversial", "partOfSpeech": "adj.", "chinese": "有爭議的" },
+                { "word": "controversy", "partOfSpeech": "n.", "chinese": "爭議" },
+                { "word": "contemplate", "partOfSpeech": "v.", "chinese": "沉思" },
+                { "word": "contemplate", "partOfSpeech": "v.", "chinese": "考量，盤算" }
             ],
             'U4': [
                 { word: 'objective', partOfSpeech: 'n.', chinese: '目標、目的' },
@@ -288,7 +431,7 @@
             if (selectedUnit === 'U1~U3') {
                 words = [].concat(vocabularyData['U1'], vocabularyData['U2'], vocabularyData['U3']);
             } else if (selectedUnit === 'U4~U12') {
-                words = [].concat(vocabularyData['U4'], vocabularyData['U5'], vocabularyData['U6'],vocabularyData['U7'], vocabularyData['U8'], vocabularyData['U9'],vocabularyData['U10'], vocabularyData['U11'], vocabularyData['U12']);
+                words = [].concat(vocabularyData['U4'], vocabularyData['U5'], vocabularyData['U6'], vocabularyData['U7'], vocabularyData['U8'], vocabularyData['U9'], vocabularyData['U10'], vocabularyData['U11'], vocabularyData['U12']);
             } else if (vocabularyData[selectedUnit]) {
                 words = vocabularyData[selectedUnit];
             }
