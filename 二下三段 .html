@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTNBHTKJC7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WTNBHTKJC7');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單字學習網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .first-letter-section {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 25%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 10%;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 25%;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 20%;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 20%;
+        }
+
+        .fill-in-blank {
+            font-family: monospace;
+            font-size: 1.2em;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+        }
+
+        .fill-in-blank:hover {
+            background-color: #f0f0f0;
+        }
+
+        #vocabularyTable {
+            width: 100%;
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        .choose {
+            text-align: center;
+        }
+
+        #vocabularyTable .h {
+            text-align: left;
+        }
+
+        #vioce {
+            width: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>二上二段單字</h1>
+        <p>如有時間希望大家幫忙填寫</p>
+        <a href="https://forms.gle/4GnTQ3eeXKfuqZY7A">意見回饋</a>
+    </header>
+
+    <main>
+        <br>
+        <select id="unitSelector">
+            <option value="">請選擇單元</option>
+            <option value="U11">U7</option>
+            <option value="U12">U8</option>
+            <option value="U13">U9</option>
+            <option value="U1~U3">U7~U9</option>
+            <option value="U1">英雜U1</option>
+            <option value="U2">英雜U2</option>
+            <option value="U3">英雜U3</option>
+            <option value="U4">英雜U4</option>
+            <option value="U5">英雜U5</option>
+            <option value="U6">英雜U7</option>
+            <option value="U7">英雜U8</option>
+            <option value="U8">英雜U9</option>
+            <option value="U9">英雜U10</option>
+            <option value="U10">英雜U11</option>
+            <option value="U1~U10">英雜(全)</option>
+        </select>
+        <div id="vocabularyTable">
+            <p class="choose">請選擇一個單元來顯示單字</p>
+        </div>
+        <br>
+    </main>
+
+    <footer>
+        <a href="https://www.instagram.com/webupdatehub/"><img src="ins.png" style="width: 50px"></a>
+        <p>因為網站單字為全手打，可能會有錯誤<br>如若發現錯誤請 email 給 <a
+                href="mailto:s210113@email.nlhs.tyc.edu.tw">s210113@email.nlhs.tyc.edu.tw</a>
+        </p>
+    </footer>
+
+    <script>
+        const unitSelector = document.getElementById('unitSelector');
+        const vocabularyTable = document.getElementById('vocabularyTable');
+
+        const vocabularyData = {
+            'U1': [
+                { word: 'circular', partOfSpeech: 'adj.', chinese: '圓形的、環形的' },
+                { word: 'debris', partOfSpeech: 'n.', chinese: '碎片、殘骸；垃圾' },
+                { word: 'launch', partOfSpeech: 'v.', chinese: '發射；推出、發起' },
+                { word: 'launch', partOfSpeech: 'n.', chinese: '發射' },
+                { word: 'incident', partOfSpeech: 'n.', chinese: '事件、事故' },
+                { word: 'highlight', partOfSpeech: 'v.', chinese: '強調、使引起注意' },
+                { word: 'highlight', partOfSpeech: 'n.', chinese: '最精彩的部分' },
+                { word: 'atmosphere', partOfSpeech: 'n.', chinese: '大氣層；氣氛、氛圍' },
+                { word: 'urgent', partOfSpeech: 'adj.', chinese: '緊急的、急迫的' }
+            ],
+            'U2': [
+                { word: 'spectacular', partOfSpeech: 'adj.', chinese: '壯觀的、令人驚嘆的' },
+                { word: 'magnetic', partOfSpeech: 'adj.', chinese: '有吸引力的、有魅力的' },
+                { word: 'captivating', partOfSpeech: 'adj.', chinese: '迷人的、有吸引力的' },
+                { word: 'critic', partOfSpeech: 'n.', chinese: '評論員；批評者' },
+                { word: 'demonstrate', partOfSpeech: 'v.', chinese: '展現、證明' },
+                { word: 'terrifying', partOfSpeech: 'adj.', chinese: '可怕的、令人害怕的' },
+                { word: 'nomination', partOfSpeech: 'n.', chinese: '提名；任命' },
+                { word: 'recipe', partOfSpeech: 'n.', chinese: '食譜；烹飪法' },
+                { word: 'stew', partOfSpeech: 'n.', chinese: '燉菜' },
+                { word: 'pasta', partOfSpeech: 'n.', chinese: '義大利麵' },
+                { word: 'embrace', partOfSpeech: 'v.', chinese: '擁抱；欣然接受' },
+                { word: 'unrealistic', partOfSpeech: 'adj.', chinese: '不切實際的' },
+                { word: 'perceive', partOfSpeech: 'v.', chinese: '察覺；看待、視為' },
+                { word: 'version', partOfSpeech: 'n.', chinese: '版本、變化形式' },
+                { word: 'inspire', partOfSpeech: 'v.', chinese: '激勵；喚起' }
+            ],
+            'U3': [
+                { word: 'subsequent', partOfSpeech: 'adj.', chinese: '隨後的、接著的' },
+                { word: 'reconstruction', partOfSpeech: 'n.', chinese: '重建、改造' },
+                { word: 'boast', partOfSpeech: 'v.', chinese: '擁有；吹噓' },
+                { word: 'astonishing', partOfSpeech: 'adj.', chinese: '令人驚訝的' },
+                { word: 'iconic', partOfSpeech: 'adj.', chinese: '具代表性的' },
+                { word: 'inspiration', partOfSpeech: 'n.', chinese: '靈感、啟發' },
+                { word: 'tragically', partOfSpeech: 'adv.', chinese: '悲劇地、不幸地' },
+                { word: 'preserve', partOfSpeech: 'v.', chinese: '保存、維護' },
+                { word: 'heritage', partOfSpeech: 'n.', chinese: '遺產、傳統' },
+                { word: 'evident', partOfSpeech: 'adj.', chinese: '明顯的、顯而易見的' },
+                { word: 'distinctive', partOfSpeech: 'adj.', chinese: '與眾不同的、獨特的' },
+                { word: 'defensive', partOfSpeech: 'adj.', chinese: '防禦性的' },
+                { word: 'misfortune', partOfSpeech: 'n.', chinese: '不幸事故；厄運' },
+                { word: 'restore', partOfSpeech: 'v.', chinese: '修復；使恢復' },
+                { word: 'incorporate', partOfSpeech: 'v.', chinese: '包含、合併' },
+                { word: 'disaster', partOfSpeech: 'n.', chinese: '災難、災禍' }
+            ],
+            'U4': [
+                { word: 'rental', partOfSpeech: 'adj.', chinese: '租賃的、出租的' },
+                { word: 'rental', partOfSpeech: 'n.', chinese: '租金、租賃' },
+                { word: 'upgrade', partOfSpeech: 'v.', chinese: '升級、改良' },
+                { word: 'storage', partOfSpeech: 'n.', chinese: '儲藏、貯存' },
+                { word: 'preference', partOfSpeech: 'n.', chinese: '偏愛、偏好' },
+                { word: 'spacious', partOfSpeech: 'adj.', chinese: '寬敞的' },
+                { word: 'insurance', partOfSpeech: 'n.', chinese: '保險' },
+                { word: 'coverage', partOfSpeech: 'n.', chinese: '保險範圍' },
+                { word: 'liability', partOfSpeech: 'n.', chinese: '責任、義務' },
+                { word: 'assistance', partOfSpeech: 'n.', chinese: '協助、幫助' },
+                { word: 'technician', partOfSpeech: 'n.', chinese: '技師、技術員' }
+            ],
+            'U5': [
+                { word: 'superstition', partOfSpeech: 'n.', chinese: '迷信' },
+                { word: 'raid', partOfSpeech: 'v.', chinese: '突襲、闖入' },
+                { word: 'raid', partOfSpeech: 'n.', chinese: '突襲' },
+                { word: 'researcher', partOfSpeech: 'n.', chinese: '研究人員' },
+                { word: 'utilize', partOfSpeech: 'v.', chinese: '運用、使用' },
+                { word: 'disturb', partOfSpeech: 'v.', chinese: '干擾、打擾' },
+                { word: 'hive', partOfSpeech: 'n.', chinese: '蜂箱、蜂巢' },
+                { word: 'retreat', partOfSpeech: 'v.', chinese: '撤退' },
+                { word: 'retreat', partOfSpeech: 'n.', chinese: '退隱處、隱居地' },
+                { word: 'drought', partOfSpeech: 'n.', chinese: '乾旱' }
+            ],
+            'U6': [
+                { word: 'thrill', partOfSpeech: 'n.', chinese: '極度興奮、激動；驚險刺激' },
+                { word: 'refer', partOfSpeech: 'v.', chinese: '談論；提及' },
+                { word: 'random', partOfSpeech: 'adj.', chinese: '隨機的、任意的' },
+                { word: 'concept', partOfSpeech: 'n.', chinese: '概念；觀念' },
+                { word: 'install', partOfSpeech: 'v.', chinese: '安裝、設置' },
+                { word: 'themed', partOfSpeech: 'adj.', chinese: '主題式的、有特定主題的' },
+                { word: 'collector', partOfSpeech: 'n.', chinese: '收藏家、收集者' },
+                { word: 'celebrity', partOfSpeech: 'n.', chinese: '名人、明星' },
+                { word: 'competitive', partOfSpeech: 'adj.', chinese: '競爭的；具有競爭力的' },
+                { word: 'currency', partOfSpeech: 'n.', chinese: '貨幣' },
+                { word: 'acquire', partOfSpeech: 'v.', chinese: '獲得、取得；學到' },
+                { word: 'purchase', partOfSpeech: 'v.', chinese: '購買、採購' },
+                { word: 'purchase', partOfSpeech: 'n.', chinese: '購買行為；採購之物' },
+                { word: 'resemble', partOfSpeech: 'v.', chinese: '與……相像、類似' },
+                { word: 'criticism', partOfSpeech: 'n.', chinese: '批評、評論' }
+            ],
+            'U7': [
+                { word: 'equipment', partOfSpeech: 'n.', chinese: '裝備、器材、用具' },
+                { word: 'generate', partOfSpeech: 'v.', chinese: '產生、引起' },
+                { word: 'abandoned', partOfSpeech: 'adj.', chinese: '被遺棄的、遭棄用的' },
+                { word: 'oxygen', partOfSpeech: 'n.', chinese: '氧、氧氣' },
+                { word: 'enforcement', partOfSpeech: 'n.', chinese: '（法律）執行、實施' },
+                { word: 'sacred', partOfSpeech: 'adj.', chinese: '神聖的、不容褻瀆的' },
+                { word: 'expedition', partOfSpeech: 'n.', chinese: '探險、遠征；探險隊' },
+                { word: 'authority', partOfSpeech: 'n.', chinese: '當局、官方；權限' }
+            ],
+            'U8': [
+                { word: 'memorable', partOfSpeech: 'adj.', chinese: '難忘的、值得紀念的' },
+                { word: 'rim', partOfSpeech: 'n.', chinese: '邊緣、外緣' },
+                { word: 'blend', partOfSpeech: 'v.', chinese: '混合、混雜' },
+                { word: 'blend', partOfSpeech: 'n.', chinese: '混合物' },
+                { word: 'reflect', partOfSpeech: 'v.', chinese: '反映、反射；顯示' },
+                { word: 'cuisine', partOfSpeech: 'n.', chinese: '烹飪；菜餚' },
+                { word: 'immigrant', partOfSpeech: 'n.', chinese: '（外來）移民' },
+                { word: 'evolve', partOfSpeech: 'v.', chinese: '演化、進化；逐步發展' },
+                { word: 'diverse', partOfSpeech: 'adj.', chinese: '多樣的、形形色色的' },
+                { word: 'breed', partOfSpeech: 'v.', chinese: '繁殖；飼養、培育' },
+                { word: 'endangered', partOfSpeech: 'adj.', chinese: '瀕臨絕種的；有危險的' },
+                { word: 'magnificent', partOfSpeech: 'adj.', chinese: '壯觀的；極好的' },
+                { word: 'ritual', partOfSpeech: 'n.', chinese: '儀式；例行公事' },
+                { word: 'ceremony', partOfSpeech: 'n.', chinese: '典禮；儀式' },
+                { word: 'strand', partOfSpeech: 'n.', chinese: '一縷、一股（繩線等）' },
+                { word: 'destination', partOfSpeech: 'n.', chinese: '目的地' }
+            ],
+            'U9': [
+                { word: 'arena', partOfSpeech: 'n.', chinese: '競技場、體育場' },
+                { word: 'noble', partOfSpeech: 'adj.', chinese: '貴族的；高尚的' },
+                { word: 'noble', partOfSpeech: 'n.', chinese: '貴族' },
+                { word: 'outfit', partOfSpeech: 'n.', chinese: '（特殊場合）全套服裝' },
+                { word: 'controversy', partOfSpeech: 'n.', chinese: '爭議、爭論' },
+                { word: 'activist', partOfSpeech: 'n.', chinese: '社會運動人士、行動主義者' },
+                { word: 'dodge', partOfSpeech: 'v.', chinese: '躲開、避開' },
+                { word: 'update', partOfSpeech: 'v.', chinese: '更新；提供最新資訊' },
+                { word: 'update', partOfSpeech: 'n.', chinese: '更新、最新資訊' },
+                { word: 'core', partOfSpeech: 'adj.', chinese: '核心的、關鍵的' },
+                { word: 'core', partOfSpeech: 'n.', chinese: '核心、精髓；果核' }
+            ],
+            'U10': [
+                { word: 'luxury', partOfSpeech: 'n.', chinese: '奢華；奢侈品' },
+                { word: 'scent', partOfSpeech: 'n.', chinese: '香味；臭跡' },
+                { word: 'scented', partOfSpeech: 'adj.', chinese: '芳香的、芬芳的' },
+                { word: 'enhance', partOfSpeech: 'v.', chinese: '提升、增強' },
+                { word: 'fragrance', partOfSpeech: 'n.', chinese: '香氣、芳香' },
+                { word: 'flourish', partOfSpeech: 'v.', chinese: '繁榮、茁壯成長' },
+                { word: 'manufacturer', partOfSpeech: 'n.', chinese: '製造商、生產商' },
+                { word: 'emerge', partOfSpeech: 'v.', chinese: '出現、浮現' },
+                { word: 'profound', partOfSpeech: 'adj.', chinese: '深刻的；巨大的' },
+                { word: 'creation', partOfSpeech: 'n.', chinese: '創作、創造；創作物' },
+                { word: 'undergo', partOfSpeech: 'v.', chinese: '經歷、遭受' },
+                { word: 'transformation', partOfSpeech: 'n.', chinese: '轉變、改變' },
+                { word: 'emphasis', partOfSpeech: 'n.', chinese: '強調、重視' },
+                { word: 'signature', partOfSpeech: 'adj.', chinese: '招牌的、標誌性的' },
+                { word: 'accessory', partOfSpeech: 'n.', chinese: '飾品；配件' },
+                { word: 'prompt', partOfSpeech: 'v.', chinese: '促使、引起' },
+                { word: 'demand', partOfSpeech: 'n.', chinese: '要求；需求' },
+                { word: 'demand', partOfSpeech: 'v.', chinese: '要求、需要' }
+            ],
+            'U11': [
+                { word: 'mankind', partOfSpeech: 'n.', chinese: '人類' },
+                { word: 'biological', partOfSpeech: 'adj.', chinese: '生化的／生物的' },
+                { word: 'biology', partOfSpeech: 'n.', chinese: '生物學' },
+                { word: 'gigantic', partOfSpeech: 'adj.', chinese: '巨大的' },
+                { word: 'desperately', partOfSpeech: 'adv.', chinese: '拼命地' },
+                { word: 'desperate', partOfSpeech: 'adj.', chinese: '(因絕望而)不顧一切的' },
+                { word: 'dominate', partOfSpeech: 'v.', chinese: '統治，控制' },
+                { word: 'dominant', partOfSpeech: 'adj.', chinese: '主導的，占優勢的' },
+                { word: 'vast', partOfSpeech: 'adj.', chinese: '巨大的' },
+                { word: 'poisonous', partOfSpeech: 'adj.', chinese: '有毒的' },
+                { word: 'poison', partOfSpeech: 'n.', chinese: '毒物，毒藥' },
+                { word: 'poison', partOfSpeech: 'v.', chinese: '毒害，下毒' },
+                { word: 'jungle', partOfSpeech: 'n.', chinese: '叢林' },
+                { word: 'deadly', partOfSpeech: 'adj.', chinese: '致命的' },
+                { word: 'deadly', partOfSpeech: 'adv.', chinese: '非常，完全地' },
+                { word: 'gas', partOfSpeech: 'n.', chinese: '氣體' },
+                { word: 'gasoline', partOfSpeech: 'n.', chinese: '汽油' },
+                { word: 'glow', partOfSpeech: 'v.', chinese: '發光' },
+                { word: 'glow', partOfSpeech: 'n.', chinese: '光亮' },
+                { word: 'beetle', partOfSpeech: 'n.', chinese: '甲蟲' },
+                { word: 'dragonfly', partOfSpeech: 'n.', chinese: '蜻蜓' },
+                { word: 'toxic', partOfSpeech: 'adj.', chinese: '有毒的' },
+                { word: 'kingdom', partOfSpeech: 'n.', chinese: '王國' },
+                { word: 'gifted', partOfSpeech: 'adj.', chinese: '有天賦的' },
+                { word: 'guardian', partOfSpeech: 'n.', chinese: '保衛者，守護者' },
+                { word: 'fierce', partOfSpeech: 'adj.', chinese: '兇猛的' },
+                { word: 'purify', partOfSpeech: 'v.', chinese: '淨化，使純淨' },
+                { word: 'pure', partOfSpeech: 'adj.', chinese: '純粹的' },
+                { word: 'intervene', partOfSpeech: 'v.', chinese: '干涉，介入' },
+                { word: 'intervention', partOfSpeech: 'n.', chinese: '干涉' },
+                { word: 'nurture', partOfSpeech: 'v.', chinese: '養育，培育' },
+                { word: 'nurture', partOfSpeech: 'n.', chinese: '培養，後天養育' },
+                { word: 'conquer', partOfSpeech: 'v.', chinese: '佔領，征服' },
+                { word: 'conquest', partOfSpeech: 'n.', chinese: '征服' },
+                { word: 'preserve', partOfSpeech: 'v.', chinese: '保護' },
+                { word: 'preservation', partOfSpeech: 'n.', chinese: '保護' },
+                { word: 'convey', partOfSpeech: 'v.', chinese: '傳達，表達(想法)' },
+                { word: 'restore', partOfSpeech: 'v.', chinese: '恢復，使復原' }
+            ],
+            'U12': [
+                { word: 'creature', partOfSpeech: 'n.', chinese: '生物' },
+                { word: 'fortunately', partOfSpeech: 'adv.', chinese: '幸運地' },
+                { word: 'fortunate', partOfSpeech: 'adj.', chinese: '幸運的' },
+                { word: 'specialist', partOfSpeech: 'n.', chinese: '專家' },
+                { word: 'intuition', partOfSpeech: 'n.', chinese: '直覺' },
+                { word: 'obtain', partOfSpeech: 'v.', chinese: '獲得，贏得' },
+                { word: 'misfortune', partOfSpeech: 'n.', chinese: '不幸的事故或情況' },
+                { word: 'misfortune', partOfSpeech: 'n.', chinese: '不幸，厄運' },
+                { word: 'fortune', partOfSpeech: 'n.', chinese: '運氣' },
+                { word: 'abandon', partOfSpeech: 'v.', chinese: '拋棄，遺棄' },
+                { word: 'stray', partOfSpeech: 'n.', chinese: '流浪動物' },
+                { word: 'stray', partOfSpeech: 'adj.', chinese: '流浪的，走失的' },
+                { word: 'stray', partOfSpeech: 'v.', chinese: '偏離' },
+                { word: 'shelter', partOfSpeech: 'n.', chinese: '收容所' },
+                { word: 'shelter', partOfSpeech: 'v.', chinese: '庇護' },
+                { word: 'frightened', partOfSpeech: 'adj.', chinese: '害怕，恐懼' },
+                { word: 'frighten', partOfSpeech: 'v.', chinese: '使害怕，使受到驚嚇' },
+                { word: 'fright', partOfSpeech: 'n.', chinese: '恐懼' },
+                { word: 'timid', partOfSpeech: 'adj.', chinese: '膽怯的，膽小的' },
+                { word: 'subsequent', partOfSpeech: 'adj.', chinese: '接著的' },
+                { word: 'wag', partOfSpeech: 'v.', chinese: '搖動（尾巴或手指）' },
+                { word: 'wag', partOfSpeech: 'n.', chinese: '搖擺' },
+                { word: 'detect', partOfSpeech: 'v.', chinese: '察覺，發現' },
+                { word: 'detective', partOfSpeech: 'n.', chinese: '偵探，警探' },
+                { word: 'underlying', partOfSpeech: 'adj.', chinese: '潛在的，深層的' },
+                { word: 'contentment', partOfSpeech: 'n.', chinese: '滿意，滿足' },
+                { word: 'content', partOfSpeech: 'adj.', chinese: '滿意的，滿足的' },
+                { word: 'content', partOfSpeech: 'v.', chinese: '使滿意' },
+                { word: 'satisfaction', partOfSpeech: 'n.', chinese: '滿意，滿足' },
+                { word: 'confirm', partOfSpeech: 'v.', chinese: '證實，確認' },
+                { word: 'persistently', partOfSpeech: 'adv.', chinese: '持續地' },
+                { word: 'persistent', partOfSpeech: 'adj.', chinese: '持續的' },
+                { word: 'persistence', partOfSpeech: 'n.', chinese: '堅持不懈' },
+                { word: 'suspect', partOfSpeech: 'v.', chinese: '猜想，猜測' },
+                { word: 'suspect', partOfSpeech: 'n.', chinese: '嫌疑犯' },
+                { word: 'proceed', partOfSpeech: 'v.', chinese: '接著做' },
+                { word: 'proceed', partOfSpeech: 'v.', chinese: '持續進行' },
+                { word: 'embarrassed', partOfSpeech: 'adj.', chinese: '尷尬的' },
+                { word: 'embarrass', partOfSpeech: 'v.', chinese: '使尷尬，使為難' },
+                { word: 'embarrassment', partOfSpeech: 'n.', chinese: '尷尬，窘迫' },
+                { word: 'assure', partOfSpeech: 'v.', chinese: '確信' },
+                { word: 'intriguing', partOfSpeech: 'adj.', chinese: '非常有趣的，引人入勝的' },
+                { word: 'intrigue', partOfSpeech: 'v.', chinese: '使感興趣' },
+                { word: 'reception', partOfSpeech: 'n.', chinese: '感受，回應' },
+                { word: 'reception', partOfSpeech: 'n.', chinese: '招待會' },
+                { word: 'sincerely', partOfSpeech: 'adv.', chinese: '真誠地，誠實地' },
+                { word: 'sincere', partOfSpeech: 'adj.', chinese: '真誠的' }
+            ],
+            'U13': [
+                { word: 'injustice', partOfSpeech: 'n.', chinese: '不公正，不正義' },
+                { word: 'context', partOfSpeech: 'n.', chinese: '（事情存在、發生的）背景，環境' },
+                { word: 'uncover', partOfSpeech: 'v.', chinese: '揭露，發現' },
+                { word: 'tragic', partOfSpeech: 'adj.', chinese: '悲劇性的，悲慘的' },
+                { word: 'tragedy', partOfSpeech: 'n.', chinese: '悲劇，慘劇' },
+                { word: 'bind', partOfSpeech: 'v.', chinese: '綑綁' },
+                { word: 'racist', partOfSpeech: 'adj.', chinese: '種族主義的' },
+                { word: 'racism', partOfSpeech: 'n.', chinese: '種族歧視' },
+                { word: 'associate', partOfSpeech: 'v.', chinese: '把…聯想在一起' },
+                { word: 'associated', partOfSpeech: 'adj.', chinese: '有關聯的，相關的' },
+                { word: 'associate', partOfSpeech: 'n.', chinese: '同事，（生意）夥伴' },
+                { word: 'association', partOfSpeech: 'n.', chinese: '協會，社團' },
+                { word: 'minimize', partOfSpeech: 'v.', chinese: '使降到最低限度' },
+                { word: 'labor', partOfSpeech: 'n.', chinese: '（體力）勞動' },
+                { word: 'labor', partOfSpeech: 'v.', chinese: '埋頭苦幹，辛勤工作' },
+                { word: 'mock', partOfSpeech: 'v.', chinese: '嘲弄，譏笑' },
+                { word: 'mock', partOfSpeech: 'adj.', chinese: '假的，仿製的' },
+                { word: 'undergo', partOfSpeech: 'v.', chinese: '經歷' },
+                { word: 'excerpt', partOfSpeech: 'n.', chinese: '摘錄，節錄' },
+                { word: 'excerpt', partOfSpeech: 'v.', chinese: '引用，摘錄' },
+                { word: 'beloved', partOfSpeech: 'n.', chinese: '愛人' },
+                { word: 'beloved', partOfSpeech: 'adj.', chinese: '心愛的，熱愛的' },
+                { word: 'offensive', partOfSpeech: 'adj.', chinese: '冒犯的' },
+                { word: 'offend', partOfSpeech: 'v.', chinese: '冒犯' },
+                { word: 'offense', partOfSpeech: 'n.', chinese: '冒犯' },
+                { word: 'elsewhere', partOfSpeech: 'adv.', chinese: '他處' },
+                { word: 'given', partOfSpeech: 'prep.', chinese: '考慮到，鑒於' },
+                { word: 'creation', partOfSpeech: 'n.', chinese: '創造' },
+                { word: 'sorrow', partOfSpeech: 'n.', chinese: '悲傷' },
+                { word: 'frustration', partOfSpeech: 'n.', chinese: '失意，挫敗' },
+                { word: 'frustrate', partOfSpeech: 'v.', chinese: '使失意，使挫敗' },
+                { word: 'acknowledge', partOfSpeech: 'v.', chinese: '承認' },
+                { word: 'acknowledgment', partOfSpeech: 'n.', chinese: '承認' },
+                { word: 'extent', partOfSpeech: 'n.', chinese: '程度' },
+                { word: 'extent', partOfSpeech: 'n.', chinese: '面積，範圍' },
+                { word: 'accompany', partOfSpeech: 'v.', chinese: '和…一起發生，伴隨' },
+                { word: 'accompany', partOfSpeech: 'v.', chinese: '伴隨，陪伴' },
+                { word: 'comprehensive', partOfSpeech: 'adj.', chinese: '全面的，詳盡的' },
+                { word: 'explanation', partOfSpeech: 'n.', chinese: '解釋，說明' },
+                { word: 'dignity', partOfSpeech: 'n.', chinese: '尊嚴' },
+                { word: 'dignity', partOfSpeech: 'n.', chinese: '自尊' },
+                { word: 'nevertheless', partOfSpeech: 'adv.', chinese: '然而，儘管如此' },
+                { word: 'strive', partOfSpeech: 'v.', chinese: '努力，力爭' }
+
+            ]
+
+        }
+            ;
+
+        unitSelector.addEventListener('change', function () {
+            const selectedUnit = this.value;
+            let words = [];
+            if (selectedUnit === 'U1~U3') {
+                words = [].concat(vocabularyData['U11'], vocabularyData['U12'], vocabularyData['U13']);
+            } else if (selectedUnit === 'U1~U10') {
+                words = [].concat(vocabularyData['U1'], vocabularyData['U2'], vocabularyData['U3'], vocabularyData['U4'], vocabularyData['U5'], vocabularyData['U6'], vocabularyData['U7'], vocabularyData['U8'], vocabularyData['U9'], vocabularyData['U10']);
+            } else if (vocabularyData[selectedUnit]) {
+                words = vocabularyData[selectedUnit];
+            }
+            displayVocabularyTable(words);
+        });
+
+        function groupWordsByFirstLetter(words) {
+            const grouped = {};
+            words.forEach(word => {
+                const firstLetter = word.word[0].toLowerCase();
+                if (!grouped[firstLetter]) {
+                    grouped[firstLetter] = [];
+                }
+                grouped[firstLetter].push(word);
+            });
+            return grouped;
+        }
+
+        function createBlankWord(word) {
+            const firstLetter = word[0];
+            const lastLetter = word[word.length - 1];
+            if (word.length <= 2) {
+                return firstLetter + '_';
+            }
+            const middlePart = '_'.repeat(word.length - 2);
+            return firstLetter + middlePart + lastLetter;
+        }
+
+        function displayVocabularyTable(words) {
+            if (words.length > 0) {
+                const groupedWords = groupWordsByFirstLetter(words);
+                const sortedFirstLetters = Object.keys(groupedWords).sort();
+                let tableHTML = '';
+                sortedFirstLetters.forEach(firstLetter => {
+                    tableHTML += `
+                        <div class="first-letter-section">
+                            <h2 class="h">${firstLetter.toUpperCase()}</h2>
+                            <table>
+                                <tr>
+                                    <th>單字</th>
+                                    <th>詞性</th>
+                                    <th>中文</th>
+                                    <th>填空</th>
+                                </tr>
+                    `;
+                    const sortedWords = groupedWords[firstLetter].sort((a, b) =>
+                        a.word.localeCompare(b.word)
+                    );
+                    sortedWords.forEach(word => {
+                        const blankWord = createBlankWord(word.word);
+                        tableHTML += `
+                            <tr>
+                                <td>${word.word} <a onclick="playAudio('${word.word}')"><img src="聲音.png" id = "vioce"></a></td>
+                                <td>${word.partOfSpeech}</td>
+                                <td>${word.chinese}</td>
+                                <td><span class="fill-in-blank" onclick="revealWord(this, '${word.word}')">${blankWord}</span></td>
+                            </tr>
+                        `;
+                    });
+                    tableHTML += '</table></div>';
+                });
+                vocabularyTable.innerHTML = tableHTML;
+            } else {
+                vocabularyTable.innerHTML = '<p class="choose">請選擇一個單元來顯示單字</p>';
+            }
+        }
+
+        function revealWord(element, word) {
+            element.textContent = word;
+            element.style.color = 'blue';
+            setTimeout(() => {
+                element.textContent = createBlankWord(word);
+                element.style.color = 'black';
+            }, 2000);
+        }
+
+        function playAudio(word) {
+            const audio = new Audio(`gtts_audio_files/${word}.mp3`);
+            audio.play();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            vocabularyTable.innerHTML = '<p class="choose">請選擇一個單元來顯示單字</p>';
+        });
+    </script>
+
+</body>
+
+</html>
