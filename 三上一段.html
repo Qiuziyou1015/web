@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTNBHTKJC7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WTNBHTKJC7');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單字學習網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .first-letter-section {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 25%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 10%;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 25%;
+        }
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 20%;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 20%;
+        }
+
+        .fill-in-blank {
+            font-family: monospace;
+            font-size: 1.2em;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+        }
+
+        .fill-in-blank:hover {
+            background-color: #f0f0f0;
+        }
+
+        #vocabularyTable {
+            width: 100%;
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        .choose {
+            text-align: center;
+        }
+
+        #vocabularyTable .h {
+            text-align: left;
+        }
+
+        #vioce {
+            width: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>三上一段單字</h1>
+        <p>如有時間希望大家幫忙填寫</p>
+        <a href="https://forms.gle/4GnTQ3eeXKfuqZY7A">意見回饋</a>
+    </header>
+
+    <main>
+        <br>
+        <select id="unitSelector">
+            <option value="">請選擇單元</option>
+            <option value="U1">U1</option>
+            <option value="U1">U2</option>
+            <option value="U1">U3</option>
+            <option value="U1~U3">U1~U3</option>
+        </select>
+        <div id="vocabularyTable">
+            <p class="choose">請選擇一個單元來顯示單字</p>
+        </div>
+        <br>
+    </main>
+
+    <footer>
+        <a href="https://www.instagram.com/webupdatehub/"><img src="ins.png" style="width: 50px"></a>
+        <p>因為網站單字為全手打，可能會有錯誤<br>如若發現錯誤請 email 給 <a
+                href="mailto:s210113@email.nlhs.tyc.edu.tw">s210113@email.nlhs.tyc.edu.tw</a>
+        </p>
+    </footer>
+
+    <script>
+        const unitSelector = document.getElementById('unitSelector');
+        const vocabularyTable = document.getElementById('vocabularyTable');
+
+        const vocabularyData = {
+            'U1': [
+                { word: 'enrich', partOfSpeech: 'vt.', chinese: '(使) 豐富' },
+                { word: 'enrichment', partOfSpeech: 'n. [U]', chinese: '充實，豐富' },
+                { word: 'undertaking', partOfSpeech: 'n. [C]', chinese: '工作，任務' },
+                { word: 'undertake', partOfSpeech: 'vt.', chinese: '承擔' },
+                { word: 'coordinate', partOfSpeech: 'vt.', chinese: '使協調，使相互配合' },
+                { word: 'coordination', partOfSpeech: 'n. [U]', chinese: '協調' },
+                { word: 'coordinator', partOfSpeech: 'n. [C]', chinese: '協調者' },
+                { word: 'venue', partOfSpeech: 'n. [C]', chinese: '場地' },
+                { word: 'revenue', partOfSpeech: 'n. [U]', chinese: '收入' },
+                { word: 'surge', partOfSpeech: 'n. [C]', chinese: '遽增' },
+                { word: 'surge', partOfSpeech: 'vi.', chinese: '遽增，激烈上升' },
+                { word: 'attendance', partOfSpeech: 'n. [U]', chinese: '出席人數' },
+                { word: 'attendance', partOfSpeech: 'n. [U]', chinese: '出席' },
+                { word: 'revival', partOfSpeech: 'n. [C]', chinese: '復甦' },
+                { word: 'sensation', partOfSpeech: 'n. [C]', chinese: '造成轟動的人物或事件' },
+                { word: 'sensation', partOfSpeech: 'n. [C]', chinese: '感覺，知覺' },
+                { word: 'presume', partOfSpeech: 'vt.', chinese: '假定' },
+                { word: 'presumption', partOfSpeech: 'n. [C]', chinese: '假定' },
+                { word: 'confine', partOfSpeech: 'vt.', chinese: '限制' },
+                { word: 'confinement', partOfSpeech: 'n. [U]', chinese: '限制' },
+                { word: 'hospitality', partOfSpeech: 'n. [U]', chinese: '招待，款待' },
+                { word: 'hospitality', partOfSpeech: 'n. [U]', chinese: '好客，友好' },
+                { word: 'hospitable', partOfSpeech: 'adj.', chinese: '友好的，好客的' },
+                { word: 'array', partOfSpeech: 'n. [C]', chinese: '一批，一系列' },
+                { word: 'agency', partOfSpeech: 'n. [C]', chinese: '機構，局處' },
+                { word: 'enormous', partOfSpeech: 'adj.', chinese: '巨大的，龐大的' },
+                { word: 'exert', partOfSpeech: 'vt.', chinese: '運用，施加' },
+                { word: 'exertion', partOfSpeech: 'n. [U]', chinese: '盡力' },
+                { word: 'disruption', partOfSpeech: 'n. [C]', chinese: '干擾' },
+                { word: 'justify', partOfSpeech: 'vt.', chinese: '證明 (某事) 合理性' },
+                { word: 'justification', partOfSpeech: 'n. [C]', chinese: '理由' },
+                { word: 'massive', partOfSpeech: 'adj.', chinese: '大量的' },
+                { word: 'endeavor', partOfSpeech: 'n. [C]', chinese: '努力' },
+                { word: 'endeavor', partOfSpeech: 'vi.', chinese: '努力去做某事' },
+                { word: 'fabric', partOfSpeech: 'n. sing.', chinese: '結構' },
+                { word: 'fabric', partOfSpeech: 'n. [C]', chinese: '織物，布料' },
+                { word: 'priority', partOfSpeech: 'n. [C]', chinese: '優先事項' },
+                { word: 'elevate', partOfSpeech: 'vt.', chinese: '提升' },
+                { word: 'unlock', partOfSpeech: 'vt.', chinese: '開啟；解鎖' },
+                { word: 'substantial', partOfSpeech: 'adj.', chinese: '可觀的' },
+                { word: 'substance', partOfSpeech: 'n. [C]', chinese: '物質' }
+            ],
+            'U2': [
+                { word: 'stroll', partOfSpeech: 'vi.', chinese: '散步，閒逛' },
+                { word: 'lighten', partOfSpeech: 'vt.', chinese: '使心情好轉，使高興起來' },
+                { word: 'lighten', partOfSpeech: 'vt.', chinese: '減輕' },
+                { word: 'scent', partOfSpeech: 'n. [C]', chinese: '氣味，香味' },
+                { word: 'scent', partOfSpeech: 'vt.', chinese: '嗅到，察覺' },
+                { word: 'evoke', partOfSpeech: 'vt.', chinese: '喚起' },
+                { word: 'delightful', partOfSpeech: 'adj.', chinese: '令人愉快的' },
+                { word: 'delight', partOfSpeech: 'n. [U]', chinese: '愉快，高興' },
+                { word: 'delight', partOfSpeech: 'vt.', chinese: '使愉快，使高興' },
+                { word: 'transparent', partOfSpeech: 'adj.', chinese: '透明的，清澈的' },
+                { word: 'resemble', partOfSpeech: 'vt.', chinese: '像，類似' },
+                { word: 'resemblance', partOfSpeech: 'n. [C]', chinese: '相似，相像' },
+                { word: 'bounce', partOfSpeech: 'vi.', chinese: '彈跳，彈回' },
+                { word: 'texture', partOfSpeech: 'n. [C]', chinese: '口感' },
+                { word: 'texture', partOfSpeech: 'n. [C]', chinese: '質地' },
+                { word: 'symphony', partOfSpeech: 'n. [C]', chinese: '交響樂，交響曲' },
+                { word: 'indulge', partOfSpeech: 'vi.', chinese: '沉溺於…' },
+                { word: 'recall', partOfSpeech: 'vt.', chinese: '回想，回憶' },
+                { word: 'recall', partOfSpeech: 'n. [U]', chinese: '記憶，記性' },
+                { word: 'restraint', partOfSpeech: 'n. [U]', chinese: '克制，抑制' },
+                { word: 'restraint', partOfSpeech: 'n. [C]', chinese: '限制措施' },
+                { word: 'restrain', partOfSpeech: 'vt.', chinese: '阻止，遏止' },
+                { word: 'allowance', partOfSpeech: 'n. [C]', chinese: '零用錢' },
+                { word: 'allowance', partOfSpeech: 'n. [C]', chinese: '津貼，補貼' },
+                { word: 'refreshing', partOfSpeech: 'adj.', chinese: '清涼的，提神的' },
+                { word: 'refreshing', partOfSpeech: 'adj.', chinese: '令人耳目一新的' },
+                { word: 'refresh', partOfSpeech: 'vt.', chinese: '使恢復精力' },
+                { word: 'refreshment', partOfSpeech: 'n. [C]', chinese: '點心，提神物' },
+                { word: 'boost', partOfSpeech: 'n. [C]', chinese: '激勵，增強' },
+                { word: 'boost', partOfSpeech: 'vt.', chinese: '增強，促進' },
+                { word: 'stall', partOfSpeech: 'n. [C]', chinese: '小店，攤位' },
+                { word: 'stall', partOfSpeech: 'vi.', chinese: '拋錨，停滯' },
+                { word: 'pace', partOfSpeech: 'vt.', chinese: '為…定速度' },
+                { word: 'pace', partOfSpeech: 'vi.', chinese: '來回踱步' },
+                { word: 'pace', partOfSpeech: 'n. [U]', chinese: '步調，速度' },
+                { word: 'disposable', partOfSpeech: 'adj.', chinese: '一次性的' },
+                { word: 'disposable', partOfSpeech: 'n. [C]', chinese: '一次性物品' },
+                { word: 'patron', partOfSpeech: 'n. [C]', chinese: '顧客，主顧' },
+                { word: 'patron', partOfSpeech: 'n. [C]', chinese: '贊助者，資助人' },
+                { word: 'await', partOfSpeech: 'vt.', chinese: '等待' },
+                { word: 'composition', partOfSpeech: 'n. [U]', chinese: '構成，組成' },
+                { word: 'compose', partOfSpeech: 'vt.', chinese: '構成，組成' },
+                { word: 'compose', partOfSpeech: 'vt.', chinese: '創作(音樂、詩歌等)' },
+                { word: 'composer', partOfSpeech: 'n. [C]', chinese: '作曲家' },
+                { word: 'unify', partOfSpeech: 'vt.', chinese: '使成一體，統一' },
+                { word: 'dormitory', partOfSpeech: 'n. [C]', chinese: '宿舍' },
+                { word: 'beverage', partOfSpeech: 'n. [C]', chinese: '飲料，飲品' },
+                { word: 'collective', partOfSpeech: 'adj.', chinese: '共同的，集體的' },
+                { word: 'distinctive', partOfSpeech: 'adj.', chinese: '與眾不同的' },
+                { word: 'distinction', partOfSpeech: 'n. [C]', chinese: '區別，差異' },
+                { word: 'distinct', partOfSpeech: 'adj.', chinese: '有明顯差異的' }
+            ],
+            'U3': [
+                { word: 'destiny', partOfSpeech: 'n. [C]', chinese: '命運，宿命' },
+                { word: 'myth', partOfSpeech: 'n. [C]', chinese: '神話' },
+                { word: 'divine', partOfSpeech: 'adj.', chinese: '神的' },
+                { word: 'flaw', partOfSpeech: 'n. [C]', chinese: '缺點，瑕疵' },
+                { word: 'flawed', partOfSpeech: 'adj.', chinese: '有缺點的，有瑕疵的' },
+                { word: 'flawless', partOfSpeech: 'adj.', chinese: '完美無瑕的' },
+                { word: 'petty', partOfSpeech: 'adj.', chinese: '瑣碎的，不重要的' },
+                { word: 'revenge', partOfSpeech: 'n. [U]', chinese: '報仇，報復' },
+                { word: 'obsession', partOfSpeech: 'n. [C]', chinese: '癡迷，著魔' },
+                { word: 'obsess', partOfSpeech: 'vt.', chinese: '使著迷，使困擾' },
+                { word: 'impulse', partOfSpeech: 'n. [C]', chinese: '衝動，心血來潮' },
+                { word: 'immortal', partOfSpeech: 'n. [C]', chinese: '永生者' },
+                { word: 'immortal', partOfSpeech: 'adj.', chinese: '永生的' },
+                { word: 'mortal', partOfSpeech: 'n. [C]', chinese: '凡人，普通人' },
+                { word: 'mortality', partOfSpeech: 'n. [U]', chinese: '生命的有限' },
+                { word: 'slay', partOfSpeech: 'vt.', chinese: '殺死' },
+                { word: 'arrogance', partOfSpeech: 'n. [U]', chinese: '傲慢，自大' },
+                { word: 'arrogant', partOfSpeech: 'adj.', chinese: '自大的，傲慢的' },
+                { word: 'mischievous', partOfSpeech: 'adj.', chinese: '愛惡作劇的，淘氣的' },
+                { word: 'mischief', partOfSpeech: 'n. [U]', chinese: '(兒童的)惡作劇，搗蛋' },
+                { word: 'warrior', partOfSpeech: 'n. [C]', chinese: '(尤指舊時的) 勇士，鬥士' },
+                { word: 'contempt', partOfSpeech: 'n. [U]', chinese: '藐視，輕蔑' },
+                { word: 'indifferent', partOfSpeech: 'adj.', chinese: '冷漠的' },
+                { word: 'romance', partOfSpeech: 'n. [U]', chinese: '戀愛，愛情' },
+                { word: 'romantic', partOfSpeech: 'adj.', chinese: '浪漫的' },
+                { word: 'sly', partOfSpeech: 'adj.', chinese: '狡猾的，詭詐的' },
+                { word: 'unfold', partOfSpeech: 'vi.', chinese: '呈現，披露' },
+                { word: 'unfold', partOfSpeech: 'vt.', chinese: '攤開' },
+                { word: 'disgusted', partOfSpeech: 'adj.', chinese: '厭惡的，反感的' },
+                { word: 'disgusting', partOfSpeech: 'adj.', chinese: '令人厭惡的，令人作嘔' },
+                { word: 'disgust', partOfSpeech: 'vt.', chinese: '使作嘔，使厭惡' },
+                { word: 'rejection', partOfSpeech: 'n. [U]', chinese: '拒絕' },
+                { word: 'reject', partOfSpeech: 'vt.', chinese: '拒絕' },
+                { word: 'relentless', partOfSpeech: 'adj.', chinese: '不停的，不減弱的' },
+                { word: 'relentlessly', partOfSpeech: 'adv.', chinese: '持續不懈地，不間斷地' },
+                { word: 'despair', partOfSpeech: 'n. [U]', chinese: '絕望' },
+                { word: 'despair', partOfSpeech: 'vi.', chinese: '失去希望' },
+                { word: 'eventually', partOfSpeech: 'adv.', chinese: '最後，終於' },
+                { word: 'eventual', partOfSpeech: 'adj.', chinese: '最終的' },
+                { word: 'enclose', partOfSpeech: 'vt.', chinese: '包住，圍住' },
+                { word: 'lean', partOfSpeech: 'vi.', chinese: '傾斜，倚靠' },
+                { word: 'vow', partOfSpeech: 'vi.', chinese: '發誓，立誓' },
+                { word: 'vow', partOfSpeech: 'n. [C]', chinese: '誓言，誓約' },
+                { word: 'vulnerable', partOfSpeech: 'adj.', chinese: '(身體上或情感上)脆弱的，易受傷害的' },
+                { word: 'vulnerability', partOfSpeech: 'n. [U]', chinese: '脆弱性，弱點' }
+            ]
+        };
+
+        unitSelector.addEventListener('change', function () {
+            const selectedUnit = this.value;
+            let words = [];
+            if (selectedUnit === 'U1~U3') {
+                words = [].concat(vocabularyData['U1'], vocabularyData['U2'], vocabularyData['U3']);
+            } else if (vocabularyData[selectedUnit]) {
+                words = vocabularyData[selectedUnit];
+            }
+            displayVocabularyTable(words);
+        });
+
+        function groupWordsByFirstLetter(words) {
+            const grouped = {};
+            words.forEach(word => {
+                const firstLetter = word.word[0].toLowerCase();
+                if (!grouped[firstLetter]) {
+                    grouped[firstLetter] = [];
+                }
+                grouped[firstLetter].push(word);
+            });
+            return grouped;
+        }
+
+        function createBlankWord(word) {
+            const firstLetter = word[0];
+            const lastLetter = word[word.length - 1];
+            if (word.length <= 2) {
+                return firstLetter + '_';
+            }
+            const middlePart = '_'.repeat(word.length - 2);
+            return firstLetter + middlePart + lastLetter;
+        }
+
+        function displayVocabularyTable(words) {
+            if (words.length > 0) {
+                const groupedWords = groupWordsByFirstLetter(words);
+                const sortedFirstLetters = Object.keys(groupedWords).sort();
+                let tableHTML = '';
+                sortedFirstLetters.forEach(firstLetter => {
+                    tableHTML += `
+                        <div class="first-letter-section">
+                            <h2 class="h">${firstLetter.toUpperCase()}</h2>
+                            <table>
+                                <tr>
+                                    <th>單字</th>
+                                    <th>詞性</th>
+                                    <th>中文</th>
+                                    <th>填空</th>
+                                </tr>
+                    `;
+                    const sortedWords = groupedWords[firstLetter].sort((a, b) =>
+                        a.word.localeCompare(b.word)
+                    );
+                    sortedWords.forEach(word => {
+                        const blankWord = createBlankWord(word.word);
+                        tableHTML += `
+                            <tr>
+                                <td>${word.word} <a onclick="playAudio('${word.word}')"><img src="聲音.png" id = "vioce"></a></td>
+                                <td>${word.partOfSpeech}</td>
+                                <td>${word.chinese}</td>
+                                <td><span class="fill-in-blank" onclick="revealWord(this, '${word.word}')">${blankWord}</span></td>
+                            </tr>
+                        `;
+                    });
+                    tableHTML += '</table></div>';
+                });
+                vocabularyTable.innerHTML = tableHTML;
+            } else {
+                vocabularyTable.innerHTML = '<p class="choose">請選擇一個單元來顯示單字</p>';
+            }
+        }
+
+        function revealWord(element, word) {
+            element.textContent = word;
+            element.style.color = 'blue';
+            setTimeout(() => {
+                element.textContent = createBlankWord(word);
+                element.style.color = 'black';
+            }, 2000);
+        }
+
+        function playAudio(word) {
+            const audio = new Audio(`gtts_audio_files/${word}.mp3`);
+            audio.play();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            vocabularyTable.innerHTML = '<p class="choose">請選擇一個單元來顯示單字</p>';
+        });
+    </script>
+
+</body>
+
+</html>
