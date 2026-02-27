@@ -95,7 +95,7 @@
     </header>
     <div class="hero">
         <h1>115學測分數<span class="red">換算</span>114學測分數</h1>
-        <div class="sub">只需輸入一次成績，系統將自動為您配對並計算出所有可能的「單科」與「多科組合」在 114 年的<strong>精確小數級分</strong>，採百分位數線性內插法計算。</div>
+        <div class="sub">只需輸入一次成績，系統將自動為您配對並計算出所有可能的「單科」與「多科組合」在 114 年的級分。</div>
     </div>
     <div class="main">
         <div class="controls">
@@ -117,8 +117,8 @@
     <div class="info-strip">
         <div class="info-cell">
             <div class="info-cell-label">換算邏輯</div>
-            <div class="info-cell-value">百分位內插</div>
-            <div class="info-cell-sub">線性內插輸出小數級分</div>
+            <div class="info-cell-value">利用累計人數做百分位內插</div>
+            <div class="info-cell-sub">輸出小數級分</div>
         </div>
         <div class="info-cell">
             <div class="info-cell-label">數據來源</div>
@@ -142,34 +142,31 @@
     </footer>
 
     <script>
-        // =============================================
-        //  核心換算函數：百分位數 + 線性內插
-        //  輸出小數級分，例如 13.4
-        // =============================================
+
         function find114Grade(table114, cumCount115, total115) {
-            // 1. 算出 115 年百分位（越高分累計人數越少，百分位越高）
+            
             const p115 = cumCount115 / total115;
 
-            // 2. 114 年總人數
+            
             const total114 = table114['0'];
 
-            // 3. 目標累計人數
+            
             const targetCum114 = p115 * total114;
 
-            // 4. 整理 114 資料，從高分到低分排列
+            
             const grades114 = Object.entries(table114)
                 .map(([g, c]) => ({ grade: parseInt(g), cum: c }))
                 .sort((a, b) => b.grade - a.grade);
 
-            // 5. 邊界處理
+            
             if (targetCum114 <= grades114[0].cum) return grades114[0].grade;
             if (targetCum114 >= grades114[grades114.length - 1].cum) return grades114[grades114.length - 1].grade;
 
-            // 6. 找夾住的兩個整數級分
+            
             let upper = null, lower = null;
             for (let i = 0; i < grades114.length - 1; i++) {
-                const curr = grades114[i];     // 高分端（累計小）
-                const next = grades114[i + 1]; // 低分端（累計大）
+                const curr = grades114[i];     
+                const next = grades114[i + 1]; 
                 if (curr.cum <= targetCum114 && targetCum114 <= next.cum) {
                     upper = curr;
                     lower = next;
@@ -178,7 +175,7 @@
             }
 
             if (!upper || !lower) {
-                // Fallback：找最近的整數
+    
                 let best = grades114[0], minDiff = Infinity;
                 for (const item of grades114) {
                     const diff = Math.abs(item.cum - targetCum114);
@@ -187,20 +184,15 @@
                 return best.grade;
             }
 
-            // 7. 線性內插
-            // t=0 → upper.grade（高分），t=1 → lower.grade（低分）
+
             const t = (targetCum114 - upper.cum) / (lower.cum - upper.cum);
             const rawGrade = upper.grade - t * (upper.grade - lower.grade);
 
-            // 8. 四捨五入到小數第一位
+  
             return Math.round(rawGrade * 10) / 10;
         }
 
-        // =============================================
-        //  渲染卡片：支援小數顯示（整數大、小數小）
-        // =============================================
         function renderCard(name, s115, s114) {
-            // 把 s114 分成整數和小數部分
             const isDecimal = s114 % 1 !== 0;
             let gradeHTML;
             if (isDecimal) {
