@@ -462,29 +462,25 @@
         <div class="info-cell">
             <div class="info-cell-label">數據來源</div>
             <div class="info-cell-value">大考中心</div>
-            <div class="info-cell-sub">114 & 115 年官方公告 XLS</div>
+            <div class="info-cell-sub">114 & 115 年官方公告之各科級分累計表</div>
         </div>
         <div class="info-cell">
             <div class="info-cell-label">支援組合</div>
-            <div class="info-cell-value">自動配對</div>
-            <div class="info-cell-sub">單科至4科所有可能組合</div>
+            <div class="info-cell-value">自動產生</div>
+            <div class="info-cell-sub">單科至四科所有可能組合</div>
         </div>
         <div class="info-cell">
             <div class="info-cell-label">注意事項</div>
             <div class="info-cell-value">僅供參考</div>
-            <div class="info-cell-sub">正式申請以校方為準</div>
+            <div class="info-cell-sub">正式申請以甄選會公告為準</div>
         </div>
     </div>
     <footer>
         <span>學測換算工具 — 115→114 年度</span>
-        <span>資料來源：大考中心官方公告 XLS</span>
+        <span>資料來源：大考中心官方公告</span>
     </footer>
 
     <script>
-        // ==========================================
-        // 請在這裡貼上原本 index.html 檔案中非常長的 DATA 變數
-        // 範例： const DATA = { "115": { "1科": { ... } } };
-        // ==========================================
         const DATA = { "115": 
         { "1科": 
         { 
@@ -626,7 +622,7 @@
         } } };
 
 
-        // 計算 114 對應級分的核心函數
+
         function find114Grade(table114, p115, total115, total114) {
             const targetP114 = p115 * (total114 / total115);
             let closestGrade = 0;
@@ -641,7 +637,7 @@
             return closestGrade;
         }
 
-        // 產生結果卡片的 HTML
+
         function renderCard(name, s115, s114) {
             return `
     <div class="res-card">
@@ -655,7 +651,6 @@
   `;
         }
 
-        // 執行批次換算
         function doConvert() {
             const inputs = [
                 { id: 'in_chinese', key: 'chinese', name: '國文' },
@@ -666,7 +661,7 @@
                 { id: 'in_science', key: 'science', name: '自然' }
             ];
 
-            // 1. 蒐集使用者有輸入的科目與分數
+
             const userScores = {};
             inputs.forEach(subj => {
                 const val = document.getElementById(subj.id).value;
@@ -682,7 +677,7 @@
 
             let resultHTML = '<div class="results-container">';
 
-            // 2. 處理單科換算
+
             let singleCards = '';
             inputs.forEach(subj => {
                 if (userScores[subj.name]) {
@@ -690,7 +685,6 @@
                     const table115 = DATA['115']['1科'][subj.key];
                     const table114 = DATA['114']['1科'][subj.key];
 
-                    // 確保數據存在
                     if (table115 && table114 && table115[String(score)] !== undefined) {
                         const g114 = find114Grade(table114, table115[String(score)], table115['0'], table114['0']);
                         singleCards += renderCard(subj.name, score, g114);
@@ -701,17 +695,16 @@
                 resultHTML += `<div class="res-section"><div class="res-title">單科換算結果</div><div class="res-grid">${singleCards}</div></div>`;
             }
 
-            // 3. 處理組合換算 (自動尋找 2科, 3科, 4科)
+
             ['2科', '3科', '4科'].forEach(mode => {
-                if (!DATA['115'][mode]) return; // 如果 DATA 裡沒有這個模式就跳過
+                if (!DATA['115'][mode]) return; 
 
                 let modeCards = '';
 
-                // 遍歷 DATA 中該模式的所有組合 (例如 '國文、英文', '國文、英文、數學A' 等)
+
                 Object.keys(DATA['115'][mode]).forEach(comboKey => {
                     const requiredSubjs = comboKey.split('、');
 
-                    // 檢查使用者是否輸入了這個組合「需要的所有科目」
                     const hasAllRequired = requiredSubjs.every(s => userScores[s] !== undefined);
 
                     if (hasAllRequired) {
@@ -733,7 +726,7 @@
 
             resultHTML += '</div>';
 
-            // 4. 將結果推送到右側面板
+
             document.getElementById('resultArea').innerHTML = resultHTML;
         }
     </script>
